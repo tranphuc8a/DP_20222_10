@@ -19,4 +19,10 @@ public class ShippingConfigs {
             "Vĩnh Long", 	"Cần Thơ" };
 
     public static int[] RUSH_SUPPORT_PROVINCES_INDEX = {22, 48};
+
+    /*
+    giải pháp:
+        1: sửa chỉ định truy cập public thành private cho 2 biến trên
+        2: thêm hàm getter cho 2 biến này
+     */
 }

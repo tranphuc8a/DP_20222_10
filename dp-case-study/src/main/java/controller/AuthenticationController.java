@@ -30,6 +30,7 @@ public class AuthenticationController extends BaseController {
     }
 
     public User getMainUser() throws ExpiredSessionException {
+        //biến mainUser và expiredTime vi phạm common coupling
         if (SessionInformation.mainUser == null || SessionInformation.expiredTime == null || SessionInformation.expiredTime.isBefore(LocalDateTime.now())) {
             logout();
             throw new ExpiredSessionException();
@@ -40,16 +41,16 @@ public class AuthenticationController extends BaseController {
         try {
             User user = new UserDAO().authenticate(email, md5(password));
             if (Objects.isNull(user)) throw new FailLoginException();
-            SessionInformation.mainUser = user;
-            SessionInformation.expiredTime = LocalDateTime.now().plusHours(24);
+            SessionInformation.mainUser = user; //biến mainUser vi phạm common coupling
+            SessionInformation.expiredTime = LocalDateTime.now().plusHours(24); //biến expiredTime vi phạm common coupling
         } catch (SQLException ex) {
             throw new FailLoginException();
         }
     }
 
     public void logout() {
-        SessionInformation.mainUser = null;
-        SessionInformation.expiredTime = null;
+        SessionInformation.mainUser = null; //biến mainUser vi phạm common coupling
+        SessionInformation.expiredTime = null; //biến expiredTime vi phạm common coupling
     }
 
     /**

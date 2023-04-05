@@ -18,7 +18,7 @@ public class BaseController {
      * @return CartMedia or null
      */
     public CartItem checkMediaInCart(Media media){
-        return SessionInformation.cartInstance.checkMediaInCart(media);
+        return SessionInformation.cartInstance.checkMediaInCart(media); //biến cartInstance vi phạm common coupling
     }
 
     /**
