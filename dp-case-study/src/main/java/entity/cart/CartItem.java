@@ -13,6 +13,7 @@ public class CartItem {
     }
 
     public CartItem(Media media, Cart cart, int quantity, int price) {
+        // biến cart vi phạm stamp coupling vì không được dùng đến trong hàm
         this.media = media;
         this.quantity = quantity;
         this.price = price;

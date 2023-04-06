@@ -67,9 +67,9 @@ public class PopupScreen extends BaseScreenHandler {
         delay.play();
     }
 
-    protected void setupData(Object dto) throws Exception {
+    protected void setupData(Object dto) throws Exception { // chưa thực hiện
     }
 
-    protected void setupFunctionality() throws Exception {
+    protected void setupFunctionality() throws Exception { // chưa thực hiện
     }
 }

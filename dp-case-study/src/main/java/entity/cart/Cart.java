@@ -60,7 +60,7 @@ public class Cart {
         if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
 
-    public CartItem checkMediaInCart(Media media){
+    public CartItem checkMediaInCart(Media media){ // biến media vi phạm stamp coupling vì chỉ dùng đến id của nó
         for (CartItem cartItem : lstCartItem) {
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;
         }

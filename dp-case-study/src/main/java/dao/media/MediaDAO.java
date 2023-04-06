@@ -52,6 +52,7 @@ public class MediaDAO {
 
 
     public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
+        //biến tbname vi phạm stamp coupling
         Statement stm = AIMSDB.getConnection().createStatement();
         if (value instanceof String){
             value = "\"" + value + "\"";

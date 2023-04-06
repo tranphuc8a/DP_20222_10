@@ -85,7 +85,7 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 
 	@FXML
 	void submitDeliveryInfo(MouseEvent event) throws IOException, InterruptedException, SQLException {
-
+		// biến event vi phạm stamp coupling vì không được sử dụng
 		// validate delivery info and prepare order info
 		preprocessDeliveryInfo();
 		

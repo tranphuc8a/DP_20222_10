@@ -250,7 +250,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     }
 
     @FXML
-    void redirectLoginScreen(MouseEvent event) {
+    void redirectLoginScreen(MouseEvent event) { // biến event vi phạm stamp coupling vì không được sử dụng
         try {
             BaseScreenHandler loginScreen = new LoginScreenHandler(this.stage, ViewsConfig.LOGIN_SCREEN_PATH);
             loginScreen.setHomeScreenHandler(this);
