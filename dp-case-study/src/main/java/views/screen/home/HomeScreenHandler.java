@@ -92,7 +92,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         return (HomeController) super.getBController();
     }
 
-    protected void setupData(Object dto) throws Exception {
+    protected void setupData(Object dto) throws Exception { //biến dto vi phạm stamp coupling
         setBController(new HomeController());
         this.authenticationController = new AuthenticationController();
         try{
@@ -213,7 +213,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         if (observable instanceof MediaHandler) update((MediaHandler) observable);
     }
 
-    private void update(MediaHandler mediaHandler) {
+    private void update(MediaHandler mediaHandler) { // biến mediaHandler vi phạm stampCoupling
         int requestQuantity = mediaHandler.getRequestQuantity();
         Media media = mediaHandler.getMedia();
 

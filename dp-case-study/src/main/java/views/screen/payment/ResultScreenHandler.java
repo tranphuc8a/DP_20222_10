@@ -61,7 +61,7 @@ public class ResultScreenHandler extends BaseScreenHandler {
 	private Label messageLabel;
 
 	@FXML
-	void confirmPayment(MouseEvent event) throws IOException {
+	void confirmPayment(MouseEvent event) throws IOException { // biến event vi phạm stampCoupling
 		homeScreenHandler.show();
 	}
 }

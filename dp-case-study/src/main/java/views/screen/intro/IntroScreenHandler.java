@@ -39,7 +39,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
     }
 
 
-    protected void setupData(Object dto) throws Exception {
+    protected void setupData(Object dto) throws Exception { // hàm chưa hoàn thiện
         return;
     }
 

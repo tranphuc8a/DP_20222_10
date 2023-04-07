@@ -21,6 +21,7 @@ public class ShippingConfigs {
     public static int[] RUSH_SUPPORT_PROVINCES_INDEX = {22, 48};
 
     /*
+    PROVINCES và RUSH_SUPPORT_PROVINCES_INDEX vi phạm common coupling
     giải pháp:
         1: sửa chỉ định truy cập public thành private cho 2 biến trên
         2: thêm hàm getter cho 2 biến này

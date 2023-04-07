@@ -62,7 +62,7 @@ public class LoginScreenHandler extends BaseScreenHandler{
         return (AuthenticationController) super.getBController();
     }
 
-    protected void setupData(Object dto) throws Exception {
+    protected void setupData(Object dto) throws Exception { // hàm này chưa hoàn thiện
     }
 
     protected void setupFunctionality() throws Exception {

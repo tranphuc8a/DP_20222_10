@@ -74,10 +74,10 @@ public class ApplicationProgrammingInterface {
 
 	private static void allowMethods(String... methods) {
 		try {
-			Field methodsField = HttpURLConnection.class.getDeclaredField("methods");
+			Field methodsField = HttpURLConnection.class.getDeclaredField("methods"); //content coupling
 			methodsField.setAccessible(true);
 
-			Field modifiersField = Field.class.getDeclaredField("modifiers");
+			Field modifiersField = Field.class.getDeclaredField("modifiers"); //content coupling
 			modifiersField.setAccessible(true);
 			modifiersField.setInt(methodsField, methodsField.getModifiers() & ~Modifier.FINAL);
 

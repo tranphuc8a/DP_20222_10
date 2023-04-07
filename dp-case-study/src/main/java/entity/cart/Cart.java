@@ -26,6 +26,8 @@ public class Cart {
     public List getListMedia(){
         return lstCartItem;
     }
+    // content coupling: biến lstCartItem
+    // solution: không trả về trực tiếp biến lstCartItem mà trả về bản copy của nó
 
     public void emptyCart(){
         lstCartItem.clear();

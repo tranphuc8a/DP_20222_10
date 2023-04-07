@@ -59,6 +59,8 @@ public class Order {
     public List getOrderMediaList() {
         return orderMediaList;
     }
+    // content coupling: biến orderMediaList
+    // solution: không trả về trực tiếp biến orderMediaList mà trả về bản copy của nó
 
     public int getSubtotal() {
         return subtotal;
