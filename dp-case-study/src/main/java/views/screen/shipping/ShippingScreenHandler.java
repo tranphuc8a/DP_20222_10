@@ -68,6 +68,7 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 
 	protected void setupData(Object dto) throws Exception {
 		this.order = (Order) dto;
+		// Common coupling: PROVNICES, RUSH_SUPPORT_PROVINCES_INDEX
 		this.province.getItems().addAll(ShippingConfigs.PROVINCES);
 		this.province.getSelectionModel().select(ShippingConfigs.RUSH_SUPPORT_PROVINCES_INDEX[0]);
 	}
@@ -84,6 +85,7 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 	}
 
 	@FXML
+	// Stamp coupling: event
 	void submitDeliveryInfo(MouseEvent event) throws IOException, InterruptedException, SQLException {
 
 		// validate delivery info and prepare order info

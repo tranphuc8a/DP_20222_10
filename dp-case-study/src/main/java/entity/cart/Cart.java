@@ -24,6 +24,7 @@ public class Cart {
     }
 
     public List getListMedia(){
+        // Content coupling: lstCartItem
         return lstCartItem;
     }
 
@@ -62,6 +63,7 @@ public class Cart {
 
     public CartItem checkMediaInCart(Media media){
         for (CartItem cartItem : lstCartItem) {
+            // Stamp coupling: media
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;
         }
         return null;

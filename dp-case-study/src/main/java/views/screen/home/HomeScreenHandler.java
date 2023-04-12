@@ -92,6 +92,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         return (HomeController) super.getBController();
     }
 
+    // Stamp coupling: dto
     protected void setupData(Object dto) throws Exception {
         setBController(new HomeController());
         this.authenticationController = new AuthenticationController();
@@ -144,6 +145,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             btnLogin.setOnMouseClicked(event -> {});
         }
 
+        // Common coupling: cartInstance
         numMediaInCart.setText(String.valueOf(SessionInformation.cartInstance.getListMedia().size()) + " media");
         super.show();
     }
@@ -213,12 +215,14 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         if (observable instanceof MediaHandler) update((MediaHandler) observable);
     }
 
+    // Stamp coupling: mediaHandler
     private void update(MediaHandler mediaHandler) {
         int requestQuantity = mediaHandler.getRequestQuantity();
         Media media = mediaHandler.getMedia();
 
         try {
             if (requestQuantity > media.getQuantity()) throw new MediaNotAvailableException();
+            // Common coupling: cartInstance
             Cart cart = SessionInformation.cartInstance;
             // if media already in cart then we will increase the quantity by 1 instead of create the new cartMedia
             CartItem mediaInCart = getBController().checkMediaInCart(media);
@@ -250,6 +254,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     }
 
     @FXML
+    // Stamp coupling: event
     void redirectLoginScreen(MouseEvent event) {
         try {
             BaseScreenHandler loginScreen = new LoginScreenHandler(this.stage, ViewsConfig.LOGIN_SCREEN_PATH);

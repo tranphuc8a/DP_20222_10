@@ -30,9 +30,11 @@ public class AuthenticationController extends BaseController {
     }
 
     public User getMainUser() throws ExpiredSessionException {
+        // Common coupling: mainUser, expiredTime
         if (SessionInformation.mainUser == null || SessionInformation.expiredTime == null || SessionInformation.expiredTime.isBefore(LocalDateTime.now())) {
             logout();
             throw new ExpiredSessionException();
+            // Common coupling: mainUser
         } else return SessionInformation.mainUser.cloneInformation();
     }
 
@@ -40,16 +42,16 @@ public class AuthenticationController extends BaseController {
         try {
             User user = new UserDAO().authenticate(email, md5(password));
             if (Objects.isNull(user)) throw new FailLoginException();
-            SessionInformation.mainUser = user;
-            SessionInformation.expiredTime = LocalDateTime.now().plusHours(24);
+            SessionInformation.mainUser = user; // Common coupling: mainUser
+            SessionInformation.expiredTime = LocalDateTime.now().plusHours(24); // Common coupling: expiredTime
         } catch (SQLException ex) {
             throw new FailLoginException();
         }
     }
 
     public void logout() {
-        SessionInformation.mainUser = null;
-        SessionInformation.expiredTime = null;
+        SessionInformation.mainUser = null; // Common coupling: mainUser
+        SessionInformation.expiredTime = null; // Common coupling: expiredTime
     }
 
     /**
