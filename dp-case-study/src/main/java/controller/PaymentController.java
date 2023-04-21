@@ -44,6 +44,7 @@ public class PaymentController extends BaseController {
 	 * @throws InvalidCardException - if the string does not represent a valid date
 	 *                              in the expected format
 	 */
+	//procedural cohesion: là 1 bước xác thực thời gian trong quá trình thanh toán
 	private String getExpirationDate(String date) throws InvalidCardException {
 		String[] strs = date.split("/");
 		if (strs.length != 2) {
@@ -103,6 +104,8 @@ public class PaymentController extends BaseController {
 		return result;
 	}
 
+//	coincidental cohesion: bỏ hàm này đi vì trách nhiệm không liên quan đến class này
+//	có thể gọi emptyCart() luôn trong SessionInformation.cartInstance
 	public void emptyCart(){
         SessionInformation.cartInstance.emptyCart(); //biến cartInstance vi phạm common coupling
     }

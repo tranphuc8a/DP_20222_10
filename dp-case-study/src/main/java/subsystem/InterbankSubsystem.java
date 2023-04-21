@@ -12,7 +12,7 @@ import subsystem.interbank.InterbankSubsystemController;
  *
  */
 public class InterbankSubsystem implements InterbankInterface {
-
+	//functional cohesion
 	/**
 	 * Represent the controller of the subsystem
 	 */

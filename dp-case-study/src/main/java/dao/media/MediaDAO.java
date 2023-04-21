@@ -13,7 +13,7 @@ import java.util.List;
  * @author
  */
 public class MediaDAO {
-
+    //communicational cohesion
     public List getAllMedia() throws SQLException {
         Statement stm = AIMSDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery("select * from Media");

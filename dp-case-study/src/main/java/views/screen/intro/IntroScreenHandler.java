@@ -16,7 +16,7 @@ import views.screen.BaseScreenHandler;
 import views.screen.popup.PopupScreen;
 
 public class IntroScreenHandler extends BaseScreenHandler {
-
+    //communicational cohesion
     private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName());
 
 

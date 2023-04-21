@@ -5,6 +5,7 @@ package common.interfaces;
  */
 public interface Observable {
 
+    //functional cohesion
     void attach(Observer observer);
     void remove(Observer observer);
     void notifyObservers();

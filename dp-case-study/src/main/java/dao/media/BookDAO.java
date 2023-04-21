@@ -13,7 +13,7 @@ import java.util.Date;
  * @author
  */
 public class BookDAO extends MediaDAO {
-
+    //communicational cohesion
     @Override
     public Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM "+

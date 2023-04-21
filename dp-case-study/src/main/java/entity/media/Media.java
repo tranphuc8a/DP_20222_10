@@ -13,10 +13,10 @@ import java.util.logging.Logger;
  * @author nguyenlm
  */
 public class Media {
-
+    //functional cohesion
     private static Logger LOGGER = Utils.getLogger(Media.class.getName());
 
-    protected Statement stm;
+    protected Statement stm; //coincidental cohesion: nên tách ra 1 lớp riêng để quản lý Statement
     protected int id;
     protected String title;
     protected String category;

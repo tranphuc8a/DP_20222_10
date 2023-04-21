@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 public class ShippingScreenHandler extends BaseScreenHandler {
-
+	//communicational cohesion
 	private static final Logger LOGGER = Utils.getLogger(ShippingScreenHandler.class.getName());
 
 	@FXML

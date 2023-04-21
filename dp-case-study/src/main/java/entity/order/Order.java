@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Order {
-
+    //functional cohesion
     private int shippingFees;
     private int subtotal;
     private int tax;
@@ -24,7 +24,7 @@ public class Order {
         this.tax = 0;
     }
 
-    public Order(Cart cart) {
+    public Order(Cart cart) { //stamp coupling: biến cart chỉ dùng cart.calSubtotal() -> chỉ cần truyền tham số là subtotal thôi
         List<OrderItem> orderItems = new ArrayList<>();
         for (Object object : SessionInformation.cartInstance.getListMedia()) { //biến cartInstance vi phạm common coupling
             CartItem cartItem = (CartItem) object;

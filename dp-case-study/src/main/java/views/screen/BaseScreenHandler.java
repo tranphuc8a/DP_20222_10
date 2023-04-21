@@ -15,7 +15,7 @@ import views.screen.home.HomeScreenHandler;
 import views.screen.popup.PopupScreen;
 
 public abstract class BaseScreenHandler extends FXMLScreenHandler {
-
+	//functional cohesion
 	private static final Logger LOGGER = Utils.getLogger(BaseScreenHandler.class.getName());
 
 

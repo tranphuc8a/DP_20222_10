@@ -4,13 +4,13 @@ import entity.order.Order;
 import org.example.DistanceCalculator;
 
 public class DeliveryInfo {
-
+    //functional cohesion
     protected String name;
     protected String phone;
     protected String province;
     protected String address;
     protected String shippingInstructions;
-    protected DistanceCalculator distanceCalculator;
+    protected DistanceCalculator distanceCalculator; //coincidental cohesion: không nên là thành phần của lớp này -> nên tạo mới khi dùng đến nó
 
     public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, DistanceCalculator distanceCalculator) {
         this.name = name;

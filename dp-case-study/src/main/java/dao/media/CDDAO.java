@@ -12,7 +12,7 @@ import java.util.Date;
  * @author
  */
 public class CDDAO extends MediaDAO {
-
+    //communicational cohesion
     @Override
     public Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM "+
