@@ -24,7 +24,7 @@ public class Cart {
     }
 
     public List getListMedia(){
-        // Content coupling: lstCartItem
+        // Content coupling: lstCartItem, it's better to create getter for a copy
         return lstCartItem;
     }
 
@@ -63,7 +63,7 @@ public class Cart {
 
     public CartItem checkMediaInCart(Media media){
         for (CartItem cartItem : lstCartItem) {
-            // Stamp coupling: media
+            // Stamp coupling: media, we just need media.getID()
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;
         }
         return null;

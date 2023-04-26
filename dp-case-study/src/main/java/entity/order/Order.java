@@ -57,15 +57,17 @@ public class Order {
         this.shippingFees = deliveryInfo.calculateShippingFee(this);
     }
 
-    // Content coupling: orderMediaList
+    // Content coupling: orderMediaList, better to use this.orderMediaList
     public List getOrderMediaList() {
         return orderMediaList;
     }
 
+    // Content coupling: orderMediaList, better to use this.subTotal
     public int getSubtotal() {
         return subtotal;
     }
 
+    // Content coupling: orderMediaList, better to use this.tax
     public int getTax() {
         return tax;
     }
