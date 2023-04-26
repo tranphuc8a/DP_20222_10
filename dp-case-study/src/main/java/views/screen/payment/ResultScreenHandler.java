@@ -17,7 +17,7 @@ import views.screen.BaseScreenHandler;
 import views.screen.popup.PopupScreen;
 
 public class ResultScreenHandler extends BaseScreenHandler {
-
+  // Communicational cohesion
 	private static final Logger LOGGER = Utils.getLogger(PaymentScreenHandler.class.getName());
 
 	private String result;

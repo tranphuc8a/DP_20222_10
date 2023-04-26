@@ -14,7 +14,7 @@ import java.io.IOException;
 
 
 public class PopupScreen extends BaseScreenHandler {
-
+    // Communicational cohesion
     @FXML
     ImageView icon;
 

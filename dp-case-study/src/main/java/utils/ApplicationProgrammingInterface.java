@@ -18,12 +18,13 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 public class ApplicationProgrammingInterface {
-
+	// Coincidental cohesion
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private static Logger LOGGER = Utils.getLogger(Utils.class.getName());
 
 	public static String get(String url, String token) throws Exception {
 		LOGGER.info("Request URL: " + url + "\n");
+		// Procedural cohesion
 		HttpURLConnection conn = setupConnection(url);
 
 		conn.setRequestMethod("GET");
@@ -40,6 +41,7 @@ public class ApplicationProgrammingInterface {
 	}
 
 	public static String post(String url, String data) throws IOException {
+		// Procedural cohesion
 		allowMethods("PATCH");
 		HttpURLConnection conn = setupConnection(url);
 		conn.setRequestMethod("PATCH");

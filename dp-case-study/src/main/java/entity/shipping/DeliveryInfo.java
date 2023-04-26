@@ -4,12 +4,13 @@ import entity.order.Order;
 import org.example.DistanceCalculator;
 
 public class DeliveryInfo {
-
+    // Functional cohesion
     protected String name;
     protected String phone;
     protected String province;
     protected String address;
     protected String shippingInstructions;
+    // Coincidental cohesion
     protected DistanceCalculator distanceCalculator;
 
     public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, DistanceCalculator distanceCalculator) {

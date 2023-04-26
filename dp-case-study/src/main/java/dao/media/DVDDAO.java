@@ -11,8 +11,8 @@ import java.util.Date;
 /**
  * @author
  */
+// Communicational cohesion
 public class DVDDAO extends MediaDAO {
-
     @Override
     public Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM "+

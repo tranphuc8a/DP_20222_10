@@ -13,9 +13,10 @@ import java.util.logging.Logger;
  * @author nguyenlm
  */
 public class Media {
-
+    // Functional cohesion
     private static Logger LOGGER = Utils.getLogger(Media.class.getName());
 
+    // Coincidental cohesion
     protected Statement stm;
     protected int id;
     protected String title;

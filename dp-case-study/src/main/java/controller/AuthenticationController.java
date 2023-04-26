@@ -19,7 +19,7 @@ import java.util.Objects;
  * @author
  */
 public class AuthenticationController extends BaseController {
-
+    // Communicational cohesion: The methods isAnonymousSession, getMainUser, login, logout perform functions related to SessionInformation
     public boolean isAnonymousSession() {
         try {
             getMainUser();
@@ -61,6 +61,7 @@ public class AuthenticationController extends BaseController {
      * @param message - plain text as {@link String String}.
      * @return cipher text as {@link String String}.
      */
+    // Coincidental cohesion: The method md5 performs the function of hashing a string, unrelated to authentication functionality
     private String md5(String message) {
         String digest = null;
         try {

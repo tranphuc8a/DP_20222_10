@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class MyMap extends LinkedHashMap<String, Object> {
 	private static final long serialVersionUID = 1L;
-
+	// Functional cohesion
 	/**
 	 * Return a {@link String String} that represents the JSON object.
 	 * 

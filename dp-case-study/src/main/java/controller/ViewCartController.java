@@ -8,8 +8,8 @@ import entity.cart.Cart;
  * This class controls the flow of events when users view the Cart
  * @author nguyenlm
  */
+// Communicational cohesion: Due to the shared usage of data in SessionInformation.cartInstance
 public class ViewCartController extends BaseController{
-    
     /**
      * This method checks the available products in Cart
      * @throws SQLException

@@ -10,8 +10,8 @@ import entity.media.Media;
  * This class is the base controller for our AIMS project
  * @author nguyenlm
  */
+// Communicational cohesion: The methods that work with the shared data SessionInformation.cartInstance
 public class BaseController {
-    
     /**
      * The method checks whether the Media in Cart, if it were in, we will return the CartMedia else return null
      * @param media

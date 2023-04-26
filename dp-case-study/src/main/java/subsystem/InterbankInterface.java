@@ -13,7 +13,7 @@ import entity.payment.PaymentTransaction;
  * 
  */
 public interface InterbankInterface {
-
+	// Functional cohesion
 	/**
 	 * Pay order, and then return the payment transaction
 	 * 

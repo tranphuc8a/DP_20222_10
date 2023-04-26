@@ -22,7 +22,7 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 
 public class InvoiceScreenHandler extends BaseScreenHandler {
-
+  // Communicational cohesion
 	private static Logger LOGGER = Utils.getLogger(InvoiceScreenHandler.class.getName());
 
 	@FXML

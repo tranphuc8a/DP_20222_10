@@ -22,9 +22,9 @@ public class App extends Application {
 	ImageView logo;
 
 	@Override
+	// Temporal cohesion: Dividing the fade-in and fade-out commands into separate functions
 	public void start(Stage primaryStage) {
 		try {
-
 			// initialize the scene
 			BaseScreenHandler introScreen = new IntroScreenHandler(primaryStage, ViewsConfig.INTRO_SCREEN_PATH);
 			introScreen.show();

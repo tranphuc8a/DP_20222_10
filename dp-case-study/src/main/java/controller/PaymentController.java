@@ -44,6 +44,7 @@ public class PaymentController extends BaseController {
 	 * @throws InvalidCardException - if the string does not represent a valid date
 	 *                              in the expected format
 	 */
+	// Procedural cohesion
 	private String getExpirationDate(String date) throws InvalidCardException {
 		String[] strs = date.split("/");
 		if (strs.length != 2) {
@@ -103,6 +104,7 @@ public class PaymentController extends BaseController {
 		return result;
 	}
 
+	// Coincidental cohesion: Remove this method as its responsibility is unrelated to this class
 	public void emptyCart(){
         SessionInformation.cartInstance.emptyCart(); // Common coupling: cartInstance
     }

@@ -8,7 +8,7 @@ import common.exception.MediaNotAvailableException;
 import entity.media.Media;
 
 public class Cart {
-    
+    // Functional cohesion
     private List<CartItem> lstCartItem;
 
     public Cart() {

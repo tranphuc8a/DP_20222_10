@@ -1,7 +1,7 @@
 package entity.user;
 
 public class User {
-    
+    // Functional cohesion
     private int id;
     private String name;
     private String email;

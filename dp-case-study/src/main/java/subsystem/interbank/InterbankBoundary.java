@@ -4,7 +4,7 @@ import common.exception.UnrecognizedException;
 import utils.ApplicationProgrammingInterface;
 
 public class InterbankBoundary {
-
+	// Communicational cohesion
 	String query(String url, String data) {
 		String response = null;
 		try {

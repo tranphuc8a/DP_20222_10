@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Order {
-
+    // Functional cohesion
     private int shippingFees;
     private int subtotal;
     private int tax;

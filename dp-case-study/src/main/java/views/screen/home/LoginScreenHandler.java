@@ -35,7 +35,7 @@ import java.util.logging.Logger;
 
 
 public class LoginScreenHandler extends BaseScreenHandler{
-
+    // Communicational cohesion
     public static Logger LOGGER = Utils.getLogger(LoginScreenHandler.class.getName());
 
     @FXML
