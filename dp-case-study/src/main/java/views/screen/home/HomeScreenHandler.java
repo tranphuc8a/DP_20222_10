@@ -92,7 +92,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         return (HomeController) super.getBController();
     }
 
-    // Stamp coupling: dto
+    // Stamp coupling: dto, wasn't even used
     protected void setupData(Object dto) throws Exception {
         setBController(new HomeController());
         this.authenticationController = new AuthenticationController();

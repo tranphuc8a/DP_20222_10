@@ -6,7 +6,7 @@ package entity.shipping;
 public class ShippingConfigs {
 
     // Common coupling: PROVINCES, RUSH_SUPPORT_PROVINCES_INDEX
-    // => Chuyển public thành private, thêm getter cho 2 biến
+    // => better to change them to private, and install getter, so the value inside can't be changed
     public static String[] PROVINCES = {
             "Bắc Giang", 	"Bắc Kạn", 			"Cao Bằng", 	"Hà Giang", 	"Lạng Sơn", 	"Phú Thọ",
             "Quảng Ninh", 	"Thái Nguyên", 		"Tuyên Quang", 	"Yên Bái", 		"Điện Biên", 	"Hòa Bình",
