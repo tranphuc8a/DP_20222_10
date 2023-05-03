@@ -21,8 +21,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
+//temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class InvoiceScreenHandler extends BaseScreenHandler {
-	//communicational cohesion
 	private static Logger LOGGER = Utils.getLogger(InvoiceScreenHandler.class.getName());
 
 	@FXML

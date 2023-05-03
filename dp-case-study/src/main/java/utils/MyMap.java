@@ -13,7 +13,6 @@ import java.util.*;
  *
  */
 public class MyMap extends LinkedHashMap<String, Object> {
-	//functional cohesion
 	private static final long serialVersionUID = 1L;
 
 	/**

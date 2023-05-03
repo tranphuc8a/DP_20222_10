@@ -11,7 +11,6 @@ import entity.media.Media;
  * @author nguyenlm
  */
 public class BaseController {
-    //communicational cohesion: các method làm việc chung data SessionInformation.cartInstance
     /**
      * The method checks whether the Media in Cart, if it were in, we will return the CartMedia else return null
      * @param media

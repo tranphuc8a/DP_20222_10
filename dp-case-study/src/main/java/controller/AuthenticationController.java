@@ -19,7 +19,6 @@ import java.util.Objects;
  * @author
  */
 public class AuthenticationController extends BaseController {
-    //communicational cohesion: các method isAnonymousSession, getMainUser, login, logout thực hiện các chức năng liên quan đến SessionInformation
 
     public boolean isAnonymousSession() {
         try {
@@ -61,8 +60,6 @@ public class AuthenticationController extends BaseController {
      * @param message - plain text as {@link String String}.
      * @return cipher text as {@link String String}.
      */
-    //coincidental cohesion: method md5 thực hiện chức năng băm 1 chuỗi, không liên quan đến chức năng xác thực
-    //solution: có thể tách hàm này vào 1 lớp HashHelper riêng trong package utils
     private String md5(String message) {
         String digest = null;
         try {

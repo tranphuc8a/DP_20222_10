@@ -14,7 +14,17 @@ import java.io.IOException;
 
 
 public class PopupScreen extends BaseScreenHandler {
-    //communicational cohesion
+    /*
+    Logical cohesion: success(), error(), loading()
+    Solution:
+        - Trong lớp PopupScreen: thêm phương thức showPopup() để các lớp extension mở rộng,
+            chuyển popup() từ private static -> protected
+        - Tạo 3 lớp con SuccessPopupScreen, ErrorPopupScreen, LoadingPopupScreen extends PopupScreen,
+            trong mỗi lớp này cần override method showPopup() và triển khai các method tương ứng với
+            success(), error(), loading() ở dưới
+        - 3 lớp con trên có thể triển khai singleton pattern vì chỉ cần sử dụng 1 object duy nhất để
+            những công việc này
+     */
     @FXML
     ImageView icon;
 

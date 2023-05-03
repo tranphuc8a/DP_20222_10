@@ -14,7 +14,6 @@ import java.util.Map;
  * @author
  */
 public class InterbankPayloadConverter {
-    //functional cohesion
     /**
      * Convert from native entity into interbank required format
      * @param card
@@ -114,7 +113,6 @@ public class InterbankPayloadConverter {
      * @author hieudm
      * @return the current time as {@link String String}.
      */
-    //coincidental cohesion: nên cho vào 1 lớp until
     private String getToday() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();

@@ -3,7 +3,6 @@ package entity.cart;
 import entity.media.Media;
 
 public class CartItem {
-    //functional cohesion
     private Media media;
     private int quantity;
     private int price;

@@ -28,8 +28,8 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+//temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class ShippingScreenHandler extends BaseScreenHandler {
-	//communicational cohesion
 	private static final Logger LOGGER = Utils.getLogger(ShippingScreenHandler.class.getName());
 
 	@FXML

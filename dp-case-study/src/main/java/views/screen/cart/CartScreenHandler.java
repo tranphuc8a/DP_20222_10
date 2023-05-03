@@ -27,7 +27,6 @@ import views.screen.popup.PopupScreen;
 import views.screen.shipping.ShippingScreenHandler;
 
 public class CartScreenHandler extends BaseScreenHandler {
-	//communicational cohesion
 	private static Logger LOGGER = Utils.getLogger(CartScreenHandler.class.getName());
 
 	@FXML

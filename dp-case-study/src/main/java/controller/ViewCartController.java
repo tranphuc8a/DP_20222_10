@@ -9,7 +9,6 @@ import entity.cart.Cart;
  * @author nguyenlm
  */
 public class ViewCartController extends BaseController{
-    //communicational cohesion: do dùng chung dữ liệu SessionInformation.cartInstance
     /**
      * This method checks the available products in Cart
      * @throws SQLException

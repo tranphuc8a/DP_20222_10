@@ -33,9 +33,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
-
+//temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class LoginScreenHandler extends BaseScreenHandler{
-    //communicational cohesion
     public static Logger LOGGER = Utils.getLogger(LoginScreenHandler.class.getName());
 
     @FXML

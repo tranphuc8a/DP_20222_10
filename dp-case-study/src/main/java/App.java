@@ -23,7 +23,6 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		//temporal cohesion: tách các câu lệnh tạo fadein fadeout thành các hàm riêng
 		try {
 
 			// initialize the scene

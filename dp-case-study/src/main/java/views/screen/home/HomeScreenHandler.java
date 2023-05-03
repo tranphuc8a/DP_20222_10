@@ -36,8 +36,8 @@ import views.screen.cart.CartScreenHandler;
 import views.screen.popup.PopupScreen;
 
 
+//temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
-    //communicational cohesion
     public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
 
     @FXML
