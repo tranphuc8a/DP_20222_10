@@ -10,7 +10,7 @@ public class InterbankSubsystemController {
 
 	public PaymentTransaction refund(CreditCard card, int amount, String contents) {
 		return null;
-	}
+	} // hiện chưa làm gì
 
 	public PaymentTransaction payOrder(CreditCard card, int amount, String contents) {
 		String requestPayload = interbankPayloadConverter.convertToRequestPayload(card, amount, contents);

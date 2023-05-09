@@ -28,8 +28,12 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+//temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class ShippingScreenHandler extends BaseScreenHandler {
+<<<<<<< HEAD
   // Communicational cohesion
+=======
+>>>>>>> c402dd343b6ccc208c17ddb2a8e63903b3db22a1
 	private static final Logger LOGGER = Utils.getLogger(ShippingScreenHandler.class.getName());
 
 	@FXML
@@ -68,9 +72,14 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 
 	protected void setupData(Object dto) throws Exception {
 		this.order = (Order) dto;
+<<<<<<< HEAD
 		// Common coupling: PROVNICES, RUSH_SUPPORT_PROVINCES_INDEX
 		this.province.getItems().addAll(ShippingConfigs.PROVINCES);
 		this.province.getSelectionModel().select(ShippingConfigs.RUSH_SUPPORT_PROVINCES_INDEX[0]);
+=======
+		this.province.getItems().addAll(ShippingConfigs.PROVINCES); // vi phạm common coupling ở biến PROVINCES
+		this.province.getSelectionModel().select(ShippingConfigs.RUSH_SUPPORT_PROVINCES_INDEX[0]); // vi phạm common coupling ở biến RUSH_SUPPORT_PROVINCES_INDEX
+>>>>>>> c402dd343b6ccc208c17ddb2a8e63903b3db22a1
 	}
 
 	protected void setupFunctionality() throws Exception {
@@ -87,7 +96,7 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 	@FXML
 	// Stamp coupling: event
 	void submitDeliveryInfo(MouseEvent event) throws IOException, InterruptedException, SQLException {
-
+		// biến event vi phạm stamp coupling vì không được sử dụng
 		// validate delivery info and prepare order info
 		preprocessDeliveryInfo();
 		

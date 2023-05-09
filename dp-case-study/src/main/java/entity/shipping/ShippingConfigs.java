@@ -21,4 +21,11 @@ public class ShippingConfigs {
             "Vĩnh Long", 	"Cần Thơ" };
 
     public static int[] RUSH_SUPPORT_PROVINCES_INDEX = {22, 48};
+
+    /*
+    PROVINCES và RUSH_SUPPORT_PROVINCES_INDEX vi phạm common coupling
+    giải pháp:
+        1: change public to private
+        2: provide getter
+     */
 }

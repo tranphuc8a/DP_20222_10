@@ -15,6 +15,7 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.popup.PopupScreen;
 
+//temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class IntroScreenHandler extends BaseScreenHandler {
     // Communicational cohesion
     private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName());
@@ -38,7 +39,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
     }
 
 
-    protected void setupData(Object dto) throws Exception {
+    protected void setupData(Object dto) throws Exception { // hàm chưa hoàn thiện
         return;
     }
 

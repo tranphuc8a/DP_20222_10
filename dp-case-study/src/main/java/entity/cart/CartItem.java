@@ -14,6 +14,7 @@ public class CartItem {
 
     // Stamp coupling: cart
     public CartItem(Media media, Cart cart, int quantity, int price) {
+        // biến cart violate stamp coupling
         this.media = media;
         this.quantity = quantity;
         this.price = price;

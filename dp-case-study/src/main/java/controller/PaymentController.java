@@ -106,6 +106,10 @@ public class PaymentController extends BaseController {
 
 	// Coincidental cohesion: Remove this method as its responsibility is unrelated to this class
 	public void emptyCart(){
+<<<<<<< HEAD
         SessionInformation.cartInstance.emptyCart(); // Common coupling: cartInstance
+=======
+        SessionInformation.cartInstance.emptyCart(); //biến cartInstance vi phạm common coupling
+>>>>>>> c402dd343b6ccc208c17ddb2a8e63903b3db22a1
     }
 }

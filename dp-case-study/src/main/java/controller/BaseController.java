@@ -18,8 +18,12 @@ public class BaseController {
      * @return CartMedia or null
      */
     public CartItem checkMediaInCart(Media media){
+<<<<<<< HEAD
         // Common coupling: cartInstance
         return SessionInformation.cartInstance.checkMediaInCart(media);
+=======
+        return SessionInformation.cartInstance.checkMediaInCart(media); //biến cartInstance vi phạm common coupling
+>>>>>>> c402dd343b6ccc208c17ddb2a8e63903b3db22a1
     }
 
     /**

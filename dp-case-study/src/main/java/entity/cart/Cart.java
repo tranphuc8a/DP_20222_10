@@ -27,6 +27,8 @@ public class Cart {
         // Content coupling: lstCartItem, it's better to create getter for a copy
         return lstCartItem;
     }
+    // content coupling: biến lstCartItem
+    // solution: không trả về trực tiếp biến lstCartItem mà trả về bản copy của nó
 
     public void emptyCart(){
         lstCartItem.clear();
@@ -61,7 +63,7 @@ public class Cart {
         if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
 
-    public CartItem checkMediaInCart(Media media){
+    public CartItem checkMediaInCart(Media media){ // media violated stamp coupling (we only use the id property)
         for (CartItem cartItem : lstCartItem) {
             // Stamp coupling: media, we just need media.getID()
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;

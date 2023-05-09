@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Logger;
 
+//temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class PaymentScreenHandler extends BaseScreenHandler {
   // Communicational cohesion
 	private static final Logger LOGGER = Utils.getLogger(PaymentScreenHandler.class.getName());
