@@ -21,8 +21,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
+//temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class InvoiceScreenHandler extends BaseScreenHandler {
-
 	private static Logger LOGGER = Utils.getLogger(InvoiceScreenHandler.class.getName());
 
 	@FXML
@@ -103,7 +103,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 	}
 
 	@FXML
-	void confirmInvoice(MouseEvent event) throws IOException {
+	void confirmInvoice(MouseEvent event) throws IOException { // biến event vi phạm stamp coupling vì không được sử dụng
 		BaseScreenHandler paymentScreen = new PaymentScreenHandler(this.stage, ViewsConfig.PAYMENT_SCREEN_PATH, invoice);
 		paymentScreen.setBController(new PaymentController());
 		paymentScreen.setPreviousScreen(this);

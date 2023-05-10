@@ -12,7 +12,6 @@ import java.util.Date;
  * @author
  */
 public class CDDAO extends MediaDAO {
-
     @Override
     public Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM "+

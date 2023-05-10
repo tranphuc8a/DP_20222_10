@@ -33,7 +33,7 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public void placeOrder() throws SQLException {
-        SessionInformation.cartInstance.checkAvailabilityOfProduct();
+        SessionInformation.cartInstance.checkAvailabilityOfProduct(); //biến cartInstance vi phạm common coupling
     }
 
     /**
@@ -42,7 +42,7 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public Order createOrder() throws SQLException {
-        return new Order(SessionInformation.cartInstance);
+        return new Order(SessionInformation.cartInstance); //biến cartInstance vi phạm common coupling
     }
 
     /**
@@ -81,6 +81,11 @@ public class PlaceOrderController extends BaseController {
    * @throws InterruptedException
    * @throws IOException
    */
+
+    // SRP: Các phương thức validateDeliveryInfo, PhoneNumber, Address, Name vi phạm nguyên lý SRP
+    // Solution: Chuyển các phương thức trên vào làm trách nhiệm của lớp DeliveryInfo
+    // Thay tham số truyền vào các hàm xử lý DeliveryInfo từ HashMap về instance của lớp DeliveryInfo
+
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         if (validatePhoneNumber(info.get("phone"))
         || validateName(info.get("name"))

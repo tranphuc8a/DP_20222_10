@@ -11,14 +11,13 @@ import entity.media.Media;
  * @author nguyenlm
  */
 public class BaseController {
-    
     /**
      * The method checks whether the Media in Cart, if it were in, we will return the CartMedia else return null
      * @param media
      * @return CartMedia or null
      */
     public CartItem checkMediaInCart(Media media){
-        return SessionInformation.cartInstance.checkMediaInCart(media);
+        return SessionInformation.cartInstance.checkMediaInCart(media); //biến cartInstance vi phạm common coupling
     }
 
     /**

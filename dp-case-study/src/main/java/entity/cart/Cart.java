@@ -8,7 +8,6 @@ import common.exception.MediaNotAvailableException;
 import entity.media.Media;
 
 public class Cart {
-    
     private List<CartItem> lstCartItem;
 
     public Cart() {
@@ -26,6 +25,8 @@ public class Cart {
     public List getListMedia(){
         return lstCartItem;
     }
+    // content coupling: biến lstCartItem
+    // solution: không trả về trực tiếp biến lstCartItem mà trả về bản copy của nó
 
     public void emptyCart(){
         lstCartItem.clear();
@@ -60,7 +61,7 @@ public class Cart {
         if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
 
-    public CartItem checkMediaInCart(Media media){
+    public CartItem checkMediaInCart(Media media){ // biến media vi phạm stamp coupling vì chỉ dùng đến id của nó
         for (CartItem cartItem : lstCartItem) {
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;
         }

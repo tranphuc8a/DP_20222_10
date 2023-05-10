@@ -13,7 +13,6 @@ import java.util.logging.Logger;
  * @author nguyenlm
  */
 public class Media {
-
     private static Logger LOGGER = Utils.getLogger(Media.class.getName());
 
     protected Statement stm;

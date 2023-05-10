@@ -4,13 +4,12 @@ import entity.payment.CreditCard;
 import entity.payment.PaymentTransaction;
 
 public class InterbankSubsystemController {
-
 	private static InterbankPayloadConverter interbankPayloadConverter = new InterbankPayloadConverter();
 	private static InterbankBoundary interbankBoundary = new InterbankBoundary();
 
 	public PaymentTransaction refund(CreditCard card, int amount, String contents) {
 		return null;
-	}
+	} // hiện chưa làm gì
 
 	public PaymentTransaction payOrder(CreditCard card, int amount, String contents) {
 		String requestPayload = interbankPayloadConverter.convertToRequestPayload(card, amount, contents);

@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class FXMLScreenHandler {
-
 	protected FXMLLoader loader;
 	protected AnchorPane content;
 

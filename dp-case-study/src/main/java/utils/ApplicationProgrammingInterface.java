@@ -18,6 +18,8 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 public class ApplicationProgrammingInterface {
+	// SRP OCP: get() và post() có trách nhiệm khác nhau
+	// solution: tách vào các lớp GetAPI, PostAPI cùng extends lớp API này và cùng ghi đè phương thức excute()
 
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private static Logger LOGGER = Utils.getLogger(Utils.class.getName());
@@ -74,10 +76,10 @@ public class ApplicationProgrammingInterface {
 
 	private static void allowMethods(String... methods) {
 		try {
-			Field methodsField = HttpURLConnection.class.getDeclaredField("methods");
+			Field methodsField = HttpURLConnection.class.getDeclaredField("methods"); //content coupling
 			methodsField.setAccessible(true);
 
-			Field modifiersField = Field.class.getDeclaredField("modifiers");
+			Field modifiersField = Field.class.getDeclaredField("modifiers"); //content coupling
 			modifiersField.setAccessible(true);
 			modifiersField.setInt(methodsField, methodsField.getModifiers() & ~Modifier.FINAL);
 

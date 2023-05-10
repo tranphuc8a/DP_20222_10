@@ -13,7 +13,6 @@ import java.util.List;
  * @author
  */
 public class MediaDAO {
-
     public List getAllMedia() throws SQLException {
         Statement stm = AIMSDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery("select * from Media");
@@ -52,6 +51,7 @@ public class MediaDAO {
 
 
     public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
+        //biến tbname vi phạm stamp coupling
         Statement stm = AIMSDB.getConnection().createStatement();
         if (value instanceof String){
             value = "\"" + value + "\"";

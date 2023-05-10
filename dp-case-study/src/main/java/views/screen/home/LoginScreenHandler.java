@@ -33,9 +33,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
-
+//temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class LoginScreenHandler extends BaseScreenHandler{
-
     public static Logger LOGGER = Utils.getLogger(LoginScreenHandler.class.getName());
 
     @FXML
@@ -62,7 +61,7 @@ public class LoginScreenHandler extends BaseScreenHandler{
         return (AuthenticationController) super.getBController();
     }
 
-    protected void setupData(Object dto) throws Exception {
+    protected void setupData(Object dto) throws Exception { // hàm này chưa hoàn thiện
     }
 
     protected void setupFunctionality() throws Exception {
@@ -81,6 +80,7 @@ public class LoginScreenHandler extends BaseScreenHandler{
 
     @FXML
     void backToHomeScreen(MouseEvent event) throws IOException, InterruptedException, SQLException {
+        // biến event vi phạm stamp coupling vì không được sử dụng
         this.homeScreenHandler.show();
     }
 }

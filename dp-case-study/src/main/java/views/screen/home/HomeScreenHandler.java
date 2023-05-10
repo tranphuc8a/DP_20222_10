@@ -36,8 +36,15 @@ import views.screen.cart.CartScreenHandler;
 import views.screen.popup.PopupScreen;
 
 
-public class HomeScreenHandler extends BaseScreenHandler implements Observer {
+//temporal cohesion: ở các hàm setupData() và setupFunctionality()
 
+// SRP: Có 2 nhóm trách nhiệm chính:
+// Xử lý Data, các hàm: setupData(), addMediaHome(), update()
+// Xử lý Functionality, các hàm: setupFunctionality(), addMenuItem(), redirectLoginScreen()
+// Solution: nhóm trách nhiệm xử lý Data thành lớp con: DataScreenHandler chịu
+// trách nhiệm xử lý nghiệp vụ liên quan đến data của nó
+
+public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
 
     @FXML
@@ -92,7 +99,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         return (HomeController) super.getBController();
     }
 
-    protected void setupData(Object dto) throws Exception {
+    protected void setupData(Object dto) throws Exception { //biến dto vi phạm stamp coupling
         setBController(new HomeController());
         this.authenticationController = new AuthenticationController();
         try{
@@ -115,7 +122,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         aimsImage.setOnMouseClicked(e -> {
             addMediaHome(this.homeItems);
         });
-
+        // chuyển lên 
         cartImage.setOnMouseClicked(e -> {
             CartScreenHandler cartScreen;
             try {
@@ -144,7 +151,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             btnLogin.setOnMouseClicked(event -> {});
         }
 
-        numMediaInCart.setText(String.valueOf(SessionInformation.cartInstance.getListMedia().size()) + " media");
+        numMediaInCart.setText(String.valueOf(SessionInformation.cartInstance.getListMedia().size()) + " media");//biến cartInstance vi phạm common coupling
         super.show();
     }
 
@@ -213,19 +220,19 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         if (observable instanceof MediaHandler) update((MediaHandler) observable);
     }
 
-    private void update(MediaHandler mediaHandler) {
+    private void update(MediaHandler mediaHandler) { // biến mediaHandler vi phạm stampCoupling
         int requestQuantity = mediaHandler.getRequestQuantity();
         Media media = mediaHandler.getMedia();
 
         try {
             if (requestQuantity > media.getQuantity()) throw new MediaNotAvailableException();
-            Cart cart = SessionInformation.cartInstance;
+            Cart cart = SessionInformation.cartInstance; //biến cartInstance vi phạm common coupling
             // if media already in cart then we will increase the quantity by 1 instead of create the new cartMedia
             CartItem mediaInCart = getBController().checkMediaInCart(media);
             if (mediaInCart != null) {
                 mediaInCart.setQuantity(mediaInCart.getQuantity() + 1);
             } else {
-                CartItem cartItem = new CartItem(media, cart, requestQuantity, media.getPrice());
+                CartItem cartItem = new CartItem(media, cart, requestQuantity, media.getPrice()); //stamp coupling
                 cart.addCartMedia(cartItem);
                 LOGGER.info("Added " + cartItem.getQuantity() + " " + media.getTitle() + " to cart");
             }
@@ -250,7 +257,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     }
 
     @FXML
-    void redirectLoginScreen(MouseEvent event) {
+    void redirectLoginScreen(MouseEvent event) { // biến event vi phạm stamp coupling vì không được sử dụng
         try {
             BaseScreenHandler loginScreen = new LoginScreenHandler(this.stage, ViewsConfig.LOGIN_SCREEN_PATH);
             loginScreen.setHomeScreenHandler(this);

@@ -14,7 +14,6 @@ import java.util.Map;
  * @author
  */
 public class InterbankPayloadConverter {
-
     /**
      * Convert from native entity into interbank required format
      * @param card
@@ -68,6 +67,7 @@ public class InterbankPayloadConverter {
                 Integer.parseInt((String) transaction.get("amount")),
                 (String) transaction.get("createdAt"));
 
+        // OCP: đặt trách nhiệm xử lý này trong hàm handlePaymentException(String codeError) trong 1 lớp mới PayLoadException
         switch (trans.getErrorCode()) {
             case "00":
                 break;
