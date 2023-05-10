@@ -10,6 +10,7 @@ public class DeliveryInfo {
     protected String province;
     protected String address;
     protected String shippingInstructions;
+    
     // Coincidental cohesion
     protected DistanceCalculator distanceCalculator;
 

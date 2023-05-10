@@ -11,10 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Order {
-<<<<<<< HEAD
     // Functional cohesion
-=======
->>>>>>> c402dd343b6ccc208c17ddb2a8e63903b3db22a1
     private int shippingFees;
     private int subtotal;
     private int tax;
@@ -29,12 +26,8 @@ public class Order {
 
     public Order(Cart cart) { //stamp coupling: biến cart chỉ dùng cart.calSubtotal() -> chỉ cần truyền tham số là subtotal thôi
         List<OrderItem> orderItems = new ArrayList<>();
-<<<<<<< HEAD
         // Common coupling: cartInstance
         for (Object object : SessionInformation.cartInstance.getListMedia()) {
-=======
-        for (Object object : SessionInformation.cartInstance.getListMedia()) { //biến cartInstance vi phạm common coupling
->>>>>>> c402dd343b6ccc208c17ddb2a8e63903b3db22a1
             CartItem cartItem = (CartItem) object;
             OrderItem orderItem = new OrderItem(cartItem.getMedia(),
                     cartItem.getQuantity(),

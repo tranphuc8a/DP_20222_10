@@ -44,7 +44,7 @@ public class PaymentController extends BaseController {
 	 * @throws InvalidCardException - if the string does not represent a valid date
 	 *                              in the expected format
 	 */
-	// Procedural cohesion
+	//procedural cohesion: this is one step in pay procedure
 	private String getExpirationDate(String date) throws InvalidCardException {
 		String[] strs = date.split("/");
 		if (strs.length != 2) {
@@ -82,6 +82,7 @@ public class PaymentController extends BaseController {
 	 * @return {@link Map Map} represent the payment result with a
 	 *         message.
 	 */
+	//procedural cohesion: next step after authorized
 	public Map<String, String> payOrder(int amount, String contents, String cardNumber, String cardHolderName,
 			String expirationDate, String securityCode) {
 		Map<String, String> result = new Hashtable<String, String>();
@@ -104,12 +105,7 @@ public class PaymentController extends BaseController {
 		return result;
 	}
 
-	// Coincidental cohesion: Remove this method as its responsibility is unrelated to this class
 	public void emptyCart(){
-<<<<<<< HEAD
-        SessionInformation.cartInstance.emptyCart(); // Common coupling: cartInstance
-=======
-        SessionInformation.cartInstance.emptyCart(); //biến cartInstance vi phạm common coupling
->>>>>>> c402dd343b6ccc208c17ddb2a8e63903b3db22a1
+        SessionInformation.cartInstance.emptyCart(); //cartInstance violated common coupling
     }
 }

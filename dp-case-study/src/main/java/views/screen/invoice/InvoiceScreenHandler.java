@@ -104,12 +104,8 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 	}
 
 	@FXML
-<<<<<<< HEAD
 	// Stamp coupling: event
 	void confirmInvoice(MouseEvent event) throws IOException {
-=======
-	void confirmInvoice(MouseEvent event) throws IOException { // biến event vi phạm stamp coupling vì không được sử dụng
->>>>>>> c402dd343b6ccc208c17ddb2a8e63903b3db22a1
 		BaseScreenHandler paymentScreen = new PaymentScreenHandler(this.stage, ViewsConfig.PAYMENT_SCREEN_PATH, invoice);
 		paymentScreen.setBController(new PaymentController());
 		paymentScreen.setPreviousScreen(this);

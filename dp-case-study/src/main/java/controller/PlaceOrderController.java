@@ -84,7 +84,7 @@ public class PlaceOrderController extends BaseController {
    * @throws IOException
    */
 
-   //ORP
+   //ORP: If we add new validate, thing get messy
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         if (validatePhoneNumber(info.get("phone"))
         || validateName(info.get("name"))

@@ -3,10 +3,7 @@ package entity.order;
 import entity.media.Media;
 
 public class OrderItem {
-<<<<<<< HEAD
     // Functional cohesion
-=======
->>>>>>> c402dd343b6ccc208c17ddb2a8e63903b3db22a1
     private Media media;
     private int price;
     private int quantity;
