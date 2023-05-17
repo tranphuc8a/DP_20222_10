@@ -13,6 +13,8 @@ import entity.payment.PaymentTransaction;
  * 
  */
 public interface InterbankInterface {
+
+	//DIP: This interface is depending on the concrete class CreditCard
 	// Functional cohesion
 	/**
 	 * Pay order, and then return the payment transaction

@@ -15,6 +15,7 @@ import views.screen.home.HomeScreenHandler;
 import views.screen.popup.PopupScreen;
 
 public abstract class BaseScreenHandler extends FXMLScreenHandler {
+	// DIP: lớp cha BaseScreenHandler đang phụ thuộc (association) vào lớp con HomeScreenHandler
 	// Functional cohesion
 	private static final Logger LOGGER = Utils.getLogger(BaseScreenHandler.class.getName());
 

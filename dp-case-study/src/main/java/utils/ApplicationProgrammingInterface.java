@@ -18,6 +18,10 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 public class ApplicationProgrammingInterface {
+	// SRP: get() and post() have different responsibilities
+	// OCP: difficult to extend when only 2 methods get() and post() are supported
+	// solution: split into GetAPI, PostAPI classes and extend this API class and
+	// override excute() method together
 	// Coincidental cohesion
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private static Logger LOGGER = Utils.getLogger(Utils.class.getName());

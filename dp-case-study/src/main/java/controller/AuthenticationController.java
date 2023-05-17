@@ -13,13 +13,12 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-
-
 /**
  * @author
  */
 public class AuthenticationController extends BaseController {
-    // Communicational cohesion: The methods isAnonymousSession, getMainUser, login, logout perform functions related to SessionInformation
+    // Communicational cohesion: The methods isAnonymousSession, getMainUser, login,
+    // logout perform functions related to SessionInformation
     public boolean isAnonymousSession() {
         try {
             getMainUser();
@@ -31,17 +30,20 @@ public class AuthenticationController extends BaseController {
 
     public User getMainUser() throws ExpiredSessionException {
         // Common coupling: mainUser, expiredTime
-        if (SessionInformation.mainUser == null || SessionInformation.expiredTime == null || SessionInformation.expiredTime.isBefore(LocalDateTime.now())) {
+        if (SessionInformation.mainUser == null || SessionInformation.expiredTime == null
+                || SessionInformation.expiredTime.isBefore(LocalDateTime.now())) {
             logout();
             throw new ExpiredSessionException();
             // Common coupling: mainUser
-        } else return SessionInformation.mainUser.cloneInformation();
+        } else
+            return SessionInformation.mainUser.cloneInformation();
     }
 
     public void login(String email, String password) throws Exception {
         try {
             User user = new UserDAO().authenticate(email, md5(password));
-            if (Objects.isNull(user)) throw new FailLoginException();
+            if (Objects.isNull(user))
+                throw new FailLoginException();
             SessionInformation.mainUser = user; // Common coupling: mainUser
             SessionInformation.expiredTime = LocalDateTime.now().plusHours(24); // Common coupling: expiredTime
         } catch (SQLException ex) {
@@ -54,6 +56,7 @@ public class AuthenticationController extends BaseController {
         SessionInformation.expiredTime = null; // Common coupling: expiredTime
     }
 
+    // srp: this should be seperate to be another file
     /**
      * Return a {@link String String} that represents the cipher text
      * encrypted by md5 algorithm.
@@ -61,7 +64,8 @@ public class AuthenticationController extends BaseController {
      * @param message - plain text as {@link String String}.
      * @return cipher text as {@link String String}.
      */
-    // Coincidental cohesion: The method md5 performs the function of hashing a string, unrelated to authentication functionality
+    // Coincidental cohesion: The method md5 performs the function of hashing a
+    // string, unrelated to authentication functionality
     private String md5(String message) {
         String digest = null;
         try {

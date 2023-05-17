@@ -4,6 +4,8 @@ package entity.payment;
  * @author
  */
 public class CreditCard {
+    // OCP: being used by: PaymentController,
+    // PaymentTransaction, InterbankPayloadConverter, so it hard to change
 
     private String cardCode;
     private String owner;

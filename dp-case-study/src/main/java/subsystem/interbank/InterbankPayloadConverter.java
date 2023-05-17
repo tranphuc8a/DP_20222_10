@@ -14,9 +14,15 @@ import java.util.Map;
  * @author
  */
 public class InterbankPayloadConverter {
+    /*
+     * SRP: 2 Responsibilities
+     * - method convertToRequestPayload(): change request to payload
+     * - method extractPaymentTransaction() cchange response to transaction
+     */
     // Functional cohesion
     /**
      * Convert from native entity into interbank required format
+     * 
      * @param card
      * @param amount
      * @param contents
@@ -45,6 +51,7 @@ public class InterbankPayloadConverter {
 
     /**
      * Read the response from interbank server
+     * 
      * @param responseText
      * @return
      */
@@ -68,6 +75,7 @@ public class InterbankPayloadConverter {
                 Integer.parseInt((String) transaction.get("amount")),
                 (String) transaction.get("createdAt"));
 
+        // OCP: put this handling responsibility in the handlePaymentException(String codeError) in a new class PayLoadException
         switch (trans.getErrorCode()) {
             case "00":
                 break;
@@ -93,7 +101,9 @@ public class InterbankPayloadConverter {
     }
 
     /**
-     * Convert response from interbank server as JSON-formatted String into a proper Map
+     * Convert response from interbank server as JSON-formatted String into a proper
+     * Map
+     * 
      * @param responseText
      * @return
      */
@@ -109,7 +119,8 @@ public class InterbankPayloadConverter {
     }
 
     /**
-     * Return a {@link String String} that represents the current time in the format of yyyy-MM-dd HH:mm:ss.
+     * Return a {@link String String} that represents the current time in the format
+     * of yyyy-MM-dd HH:mm:ss.
      *
      * @author hieudm
      * @return the current time as {@link String String}.

@@ -14,7 +14,7 @@ import java.util.Date;
  */
 // Communicational cohesion
 public class BookDAO extends MediaDAO {
-    @Override
+    //LSP: method getMediaById() change the behavior of MediaDao
     public Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM "+
                 "aims.Book " +

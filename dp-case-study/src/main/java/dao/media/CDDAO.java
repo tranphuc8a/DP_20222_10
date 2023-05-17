@@ -13,6 +13,7 @@ import java.util.Date;
  */
 // Communicational cohesion
 public class CDDAO extends MediaDAO {
+    //LSP: method getMediaById() change the behavior of MediaDao
     @Override
     public Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM "+
