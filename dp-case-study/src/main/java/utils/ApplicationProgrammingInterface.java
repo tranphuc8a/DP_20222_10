@@ -18,7 +18,8 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 public class ApplicationProgrammingInterface {
-	// SRP OCP: get() và post() có trách nhiệm khác nhau
+	// SRP: get() và post() có trách nhiệm khác nhau
+	// OCP: khó mở rộng khi chỉ hỗ trợ 2 phương thức get() và post()
 	// solution: tách vào các lớp GetAPI, PostAPI cùng extends lớp API này và cùng ghi đè phương thức excute()
 
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

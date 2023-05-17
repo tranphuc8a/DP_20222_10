@@ -20,6 +20,7 @@ public class DeliveryInfo {
         this.distanceCalculator = distanceCalculator;
     }
 
+    // OCP: vi phạm vì không thể mở rộng công thức tính phí
     public int calculateShippingFee(Order order) { // biến order vi phạm stamp coupling vì không được sử dụng trong hàm
         int distance = distanceCalculator.calculateDistance(address, province);
         return (int) (distance * 1.2);

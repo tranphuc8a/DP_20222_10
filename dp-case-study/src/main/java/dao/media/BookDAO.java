@@ -13,6 +13,7 @@ import java.util.Date;
  * @author
  */
 public class BookDAO extends MediaDAO {
+    //LSP: method getMediaById() thay đổi hành vi của lớp cha
     @Override
     public Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM "+

@@ -61,7 +61,7 @@ public class AuthenticationController extends BaseController {
      * @return cipher text as {@link String String}.
      */
 
-    // SRP: hàm md5 vi phạm nguyên lý SRP
+    // SRP: hàm md5 trách nhiệm để băm 1 chuỗi
     // Solution:
     // + Tách hàm md5 vào lớp Hasher chứa phương thức hash chịu trách nhiệm băm chuỗi
     // + Thêm thuộc tính hasher thuộc kiểu Hasher cho lớp này

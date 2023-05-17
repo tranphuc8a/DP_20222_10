@@ -4,6 +4,7 @@ package entity.payment;
  * @author
  */
 public class CreditCard {
+    // OCP: các lớp sau sử dụng CreditCard có thể vi phạm: PaymentController, PaymentTransaction, InterbankPayloadConverter
 
     private String cardCode;
     private String owner;

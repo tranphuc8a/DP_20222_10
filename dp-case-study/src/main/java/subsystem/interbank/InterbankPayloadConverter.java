@@ -14,6 +14,11 @@ import java.util.Map;
  * @author
  */
 public class InterbankPayloadConverter {
+    /* SRP:
+        - method convertToRequestPayload() có trách nhiệm là chuyển request thành payload
+        - method extractPaymentTransaction() có trách nhiệm chuyển response về transaction
+     */
+
     /**
      * Convert from native entity into interbank required format
      * @param card
