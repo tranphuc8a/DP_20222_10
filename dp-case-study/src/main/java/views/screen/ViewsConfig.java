@@ -12,7 +12,7 @@ import java.util.Locale;
  */
 public class ViewsConfig {
 
-    // SRP, các nhóm trách nhiệm khác nhau cùng chung 1 lớp
+    // SRP: các nhóm trách nhiệm khác nhau cùng chung 1 lớp: path, VAT, font, currency
     // Solution: Tách thành 4 lớp như solution của coincidental cohesion
 
     //coincidental cohesion: tất cả các thuộc tính về PATH

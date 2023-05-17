@@ -4,6 +4,7 @@ package entity.payment;
  * @author
  */
 public class CreditCard {
+    // DIP: các lớp sau sử dụng CreditCard có thể vi phạm: PaymentController, PaymentTransaction, InterbankPayloadConverter, InterbankInterface
 
     private String cardCode;
     private String owner;

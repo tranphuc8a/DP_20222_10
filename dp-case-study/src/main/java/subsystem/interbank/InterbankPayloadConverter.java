@@ -15,8 +15,7 @@ import java.util.Map;
  */
 public class InterbankPayloadConverter {
     /* SRP:
-        - method convertToRequestPayload() có trách nhiệm là chuyển request thành payload
-        - method extractPaymentTransaction() có trách nhiệm chuyển response về transaction
+        trách nhiệm của lớp là convert request sang response và ngưược lại, nhưng lại phải xử lý thêm exception
      */
 
     /**

@@ -20,6 +20,8 @@ public class DeliveryInfo {
         this.distanceCalculator = distanceCalculator;
     }
 
+    // SRP: vi phạm vì trách nhiệm tính toán phí vận chuyển và cách tính phí vận chuyển không phải của DeliveryInfo
+    // OCP: vi phạm vì đây chỉ là 1 cách tính phí thôi, trong tương lai cách tính phí rất có thể bị thay đổi
     public int calculateShippingFee(Order order) { // biến order vi phạm stamp coupling vì không được sử dụng trong hàm
         int distance = distanceCalculator.calculateDistance(address, province);
         return (int) (distance * 1.2);

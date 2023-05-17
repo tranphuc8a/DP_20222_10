@@ -8,6 +8,8 @@ import common.exception.MediaNotAvailableException;
 import entity.media.Media;
 
 public class Cart {
+    // SRP: trách nhiệm của Cart là quản lý giỏ hàng
+    // các hàm calSubtotal(), checkAvailabilityOfProduct() nên đặt trách nhiệm là của ViewCartController
     private List<CartItem> lstCartItem;
 
     public Cart() {

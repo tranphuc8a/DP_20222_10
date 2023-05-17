@@ -13,7 +13,6 @@ import entity.payment.PaymentTransaction;
  * 
  */
 public interface InterbankInterface {
-	//DIP: interface này đang depend vào lớp cụ thể là CreditCard
 
 	/**
 	 * Pay order, and then return the payment transaction
