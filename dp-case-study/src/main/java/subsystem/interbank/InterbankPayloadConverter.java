@@ -14,9 +14,6 @@ import java.util.Map;
  * @author
  */
 public class InterbankPayloadConverter {
-    /* SRP:
-        trách nhiệm của lớp là convert request sang response và ngưược lại, nhưng lại phải xử lý thêm exception
-     */
 
     /**
      * Convert from native entity into interbank required format
