@@ -11,6 +11,11 @@ import entity.media.Media;
  * @author nguyenlm
  */
 public class BaseController {
+    /* SRP:
+        Đang có 2 trách nhiệm ở đây:
+          - Trách nhiệm quản lý cart
+          - Trách nhiệm chính của lớp này là định nghĩa 1 khuôn dạng chung nhất cho các controller cụ thể
+     */
     /**
      * The method checks whether the Media in Cart, if it were in, we will return the CartMedia else return null
      * @param media
