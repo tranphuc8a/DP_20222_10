@@ -31,26 +31,26 @@ public class AuthenticationController extends BaseController {
 
     public User getMainUser() throws ExpiredSessionException {
         //biến mainUser và expiredTime vi phạm common coupling
-        if (SessionInformation.mainUser == null || SessionInformation.expiredTime == null || SessionInformation.expiredTime.isBefore(LocalDateTime.now())) {
+        if (SessionInformation.getMainUser() == null || SessionInformation.getExpiredTime() == null || SessionInformation.getExpiredTime().isBefore(LocalDateTime.now())) {
             logout();
             throw new ExpiredSessionException();
-        } else return SessionInformation.mainUser.cloneInformation();
+        } else return SessionInformation.getMainUser();
     }
 
     public void login(String email, String password) throws Exception {
         try {
             User user = new UserDAO().authenticate(email, md5(password));
             if (Objects.isNull(user)) throw new FailLoginException();
-            SessionInformation.mainUser = user; //biến mainUser vi phạm common coupling
-            SessionInformation.expiredTime = LocalDateTime.now().plusHours(24); //biến expiredTime vi phạm common coupling
+            SessionInformation.setMainUser(user); //biến mainUser vi phạm common coupling
+            SessionInformation.setExpiredTime(LocalDateTime.now().plusHours(24)); //biến expiredTime vi phạm common coupling
         } catch (SQLException ex) {
             throw new FailLoginException();
         }
     }
 
     public void logout() {
-        SessionInformation.mainUser = null; //biến mainUser vi phạm common coupling
-        SessionInformation.expiredTime = null; //biến expiredTime vi phạm common coupling
+        SessionInformation.setMainUser(null); //biến mainUser vi phạm common coupling
+        SessionInformation.setExpiredTime(null); //biến expiredTime vi phạm common coupling
     }
 
     /**

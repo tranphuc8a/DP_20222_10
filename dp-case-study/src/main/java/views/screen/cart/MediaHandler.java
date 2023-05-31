@@ -85,7 +85,7 @@ public class MediaHandler extends FXMLScreenHandler {
 		btnDelete.setOnMouseClicked(e -> {
 			try {
 				//biến cartInstance vi phạm common coupling
-				SessionInformation.cartInstance.removeCartMedia(cartItem); // update user cart
+				SessionInformation.getCartInstance().removeCartMedia(cartItem); // update user cart
 				cartScreen.updateCart(); // re-display user cart
 				LOGGER.info("Deleted " + cartItem.getMedia().getTitle() + " from the cart");
 			} catch (SQLException exp) {

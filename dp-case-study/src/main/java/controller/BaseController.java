@@ -22,7 +22,7 @@ public class BaseController {
      * @return CartMedia or null
      */
     public CartItem checkMediaInCart(Media media){
-        return SessionInformation.cartInstance.checkMediaInCart(media); //biến cartInstance vi phạm common coupling
+        return SessionInformation.getCartInstance().checkMediaInCart(media); //biến cartInstance vi phạm common coupling
     }
 
     /**
@@ -30,6 +30,6 @@ public class BaseController {
      * @return List[CartMedia]
      */
     public List getListCartMedia(){
-        return SessionInformation.cartInstance.getListMedia();
+        return SessionInformation.getCartInstance().getListMedia();
     }
 }

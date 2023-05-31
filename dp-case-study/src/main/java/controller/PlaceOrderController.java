@@ -33,7 +33,7 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public void placeOrder() throws SQLException {
-        SessionInformation.cartInstance.checkAvailabilityOfProduct(); //biến cartInstance vi phạm common coupling
+        SessionInformation.getCartInstance().checkAvailabilityOfProduct(); //biến cartInstance vi phạm common coupling
     }
 
     /**
@@ -42,7 +42,7 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public Order createOrder() throws SQLException {
-        return new Order(SessionInformation.cartInstance); //biến cartInstance vi phạm common coupling
+        return new Order(SessionInformation.getCartInstance()); //biến cartInstance vi phạm common coupling
     }
 
     /**

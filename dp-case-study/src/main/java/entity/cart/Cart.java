@@ -10,9 +10,21 @@ import entity.media.Media;
 public class Cart {
     // SRP: trách nhiệm của Cart là quản lý giỏ hàng
     // các hàm calSubtotal(), checkAvailabilityOfProduct() nên đặt trách nhiệm là của ViewCartController
-    private List<CartItem> lstCartItem;
 
-    public Cart() {
+    /*
+        Cart là duy nhất trong chương trình: chuyển thành singleton
+     */
+    private List<CartItem> lstCartItem;
+    private static Cart instance;
+
+    public static Cart getInstance() {
+        if (instance == null) {
+            instance = new Cart();
+        }
+        return instance;
+    }
+
+    private Cart() {
         lstCartItem = new ArrayList<>();
     }
 

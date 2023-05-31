@@ -14,7 +14,7 @@ public class ViewCartController extends BaseController{
      * @throws SQLException
      */
     public void checkAvailabilityOfProduct() throws SQLException{
-        SessionInformation.cartInstance.checkAvailabilityOfProduct(); //biến cartInstance vi phạm common coupling
+        SessionInformation.getCartInstance().checkAvailabilityOfProduct(); //biến cartInstance vi phạm common coupling
     }
 
     /**
@@ -22,7 +22,7 @@ public class ViewCartController extends BaseController{
      * @return subtotal
      */
     public int getCartSubtotal(){
-        int subtotal = SessionInformation.cartInstance.calSubtotal(); //biến cartInstance vi phạm common coupling
+        int subtotal = SessionInformation.getCartInstance().calSubtotal(); //biến cartInstance vi phạm common coupling
         return subtotal;
     }
 
