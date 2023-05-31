@@ -5,6 +5,7 @@ import entity.payment.PaymentTransaction;
 
 public class InterbankSubsystemController {
 	// Functional cohesion
+	// singleton: use private static final
 	private static InterbankPayloadConverter interbankPayloadConverter = new InterbankPayloadConverter();
 	private static InterbankBoundary interbankBoundary = new InterbankBoundary();
 

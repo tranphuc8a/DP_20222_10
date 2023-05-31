@@ -27,6 +27,7 @@ import views.screen.ViewsConfig;
 
 public class MediaHandler extends FXMLScreenHandler {
 	// Communicational cohesion
+	// singleton: use private static final for Logger and Date_Formatter
 	private static Logger LOGGER = Utils.getLogger(MediaHandler.class.getName());
 
 	@FXML

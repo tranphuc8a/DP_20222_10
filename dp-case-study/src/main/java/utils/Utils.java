@@ -18,6 +18,7 @@ public class Utils {
 	//Violate SRP
 	//coincidental cohesion: DATE_FORMATTER
 	//solution: nên tách riêng vào 1 class DateUtil
+	// singleton: use private static final for Logger and Date_Formatter
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	//coincidental cohesion: LOGGER, getLogger()
 	//solution: nên tách riêng vào 1 class LoggerUtil

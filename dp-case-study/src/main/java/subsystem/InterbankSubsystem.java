@@ -14,6 +14,7 @@ import subsystem.interbank.InterbankSubsystemController;
 public class InterbankSubsystem implements InterbankInterface {
 	/**
 	 * Represent the controller of the subsystem
+	 * singleton
 	 */
 	private InterbankSubsystemController ctrl;
 

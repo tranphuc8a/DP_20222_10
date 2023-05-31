@@ -36,6 +36,7 @@ import java.util.logging.Logger;
 //temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class LoginScreenHandler extends BaseScreenHandler{
     // Communicational cohesion
+    // singleton: use private static final for Logger and Date_Formatter
     public static Logger LOGGER = Utils.getLogger(LoginScreenHandler.class.getName());
 
     @FXML
