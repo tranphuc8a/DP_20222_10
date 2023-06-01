@@ -4,10 +4,8 @@ package entity.shipping;
  * @author
  */
 public class ShippingConfigs {
-    // singleton: use final variable stay the same, and provide getter to get a copy
-    // Common coupling: PROVINCES, RUSH_SUPPORT_PROVINCES_INDEX
-    // => better to change them to private, and install getter, so the value inside can't be changed
-    public static String[] PROVINCES = {
+
+    private static final String[] PROVINCES = {
             "Bắc Giang", 	"Bắc Kạn", 			"Cao Bằng", 	"Hà Giang", 	"Lạng Sơn", 	"Phú Thọ",
             "Quảng Ninh", 	"Thái Nguyên", 		"Tuyên Quang", 	"Yên Bái", 		"Điện Biên", 	"Hòa Bình",
             "Lai Châu", 	"Sơn La", 			"Bắc Ninh", 	"Hà Nam", 		"Hải Dương", 	"Hưng Yên",
@@ -18,10 +16,17 @@ public class ShippingConfigs {
             "Đà Nẵng", 		"Bà Rịa-Vũng Tàu", 	"Bình Dương", 	"Bình Phước", 	"Đồng Nai", 	"Tây Ninh",
             "Hồ Chí Minh", 	"An Giang", 		"Bạc Liêu", 	"Bến Tre", 		"Cà Mau", 		"Đồng Tháp",
             "Hậu Giang", 	"Kiên Giang", 		"Long An", 		"Sóc Trăng", 	"Tiền Giang", 	"Trà Vinh",
-            "Vĩnh Long", 	"Cần Thơ" };
+            "Vĩnh Long", 	"Cần Thơ",          "Lào Cai" };
 
-    public static int[] RUSH_SUPPORT_PROVINCES_INDEX = {22, 48};
+    private static int[] RUSH_SUPPORT_PROVINCES_INDEX = {22, 48};
 
+    public static String[] getProvinces() {
+        return PROVINCES;
+    }
+
+    public static int[] getRushSupportProvincesIndex() {
+        return RUSH_SUPPORT_PROVINCES_INDEX;
+    }
     /*
     PROVINCES và RUSH_SUPPORT_PROVINCES_INDEX vi phạm common coupling
     giải pháp:

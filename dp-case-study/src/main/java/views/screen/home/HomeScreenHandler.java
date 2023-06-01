@@ -36,6 +36,13 @@ import views.screen.cart.CartScreenHandler;
 import views.screen.popup.PopupScreen;
 
 //temporal cohesion: ở các hàm setupData() và setupFunctionality()
+
+// SRP: Có 2 nhóm trách nhiệm chính:
+// Xử lý Data, các hàm: setupData(), addMediaHome(), update()
+// Xử lý Functionality, các hàm: setupFunctionality(), addMenuItem(), redirectLoginScreen()
+// Solution: nhóm trách nhiệm xử lý Data thành lớp con: DataScreenHandler chịu
+// trách nhiệm xử lý nghiệp vụ liên quan đến data của nó
+
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     // Communicational cohesion
     public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
@@ -118,7 +125,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         aimsImage.setOnMouseClicked(e -> {
             addMediaHome(this.homeItems);
         });
-
+        // chuyển lên 
         cartImage.setOnMouseClicked(e -> {
             CartScreenHandler cartScreen;
             try {
@@ -148,8 +155,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             });
         }
 
-        // Common coupling: cartInstance
-        numMediaInCart.setText(String.valueOf(SessionInformation.cartInstance.getListMedia().size()) + " media");
+        numMediaInCart.setText(String.valueOf(SessionInformation.getCartInstance().getListMedia().size()) + " media");//biến cartInstance vi phạm common coupling
         super.show();
     }
 
@@ -225,17 +231,14 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         Media media = mediaHandler.getMedia();
 
         try {
-            if (requestQuantity > media.getQuantity())
-                throw new MediaNotAvailableException();
-            // Common coupling: cartInstance
-            Cart cart = SessionInformation.cartInstance;
-            // if media already in cart then we will increase the quantity by 1 instead of
-            // create the new cartMedia
+            if (requestQuantity > media.getQuantity()) throw new MediaNotAvailableException();
+            Cart cart = SessionInformation.getCartInstance(); //biến cartInstance vi phạm common coupling
+            // if media already in cart then we will increase the quantity by 1 instead of create the new cartMedia
             CartItem mediaInCart = getBController().checkMediaInCart(media);
             if (mediaInCart != null) {
                 mediaInCart.setQuantity(mediaInCart.getQuantity() + 1);
             } else {
-                CartItem cartItem = new CartItem(media, cart, requestQuantity, media.getPrice());
+                CartItem cartItem = new CartItem(media, cart, requestQuantity, media.getPrice()); //stamp coupling
                 cart.addCartMedia(cartItem);
                 LOGGER.info("Added " + cartItem.getQuantity() + " " + media.getTitle() + " to cart");
             }

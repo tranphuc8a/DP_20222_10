@@ -1,14 +1,39 @@
 package entity.user;
 
 public class User {
+<<<<<<< HEAD
     // Functional cohesion
+=======
+    /*
+    Đối tượng của lớp User là duy nhất trong chương trình nên:
+        + Chuyển thành singleton
+        + Bỏ phương thức cloneInformation() đi
+     */
+
+>>>>>>> 6a2dc9d22c9faa089d86dd247f32b9dde3ee87cd
     private int id;
     private String name;
     private String email;
     private String address;
     private String phone;
 
-    public User(int id, String name, String email, String address, String phone) {
+    private static User instance;
+
+    public static User getInstance() {
+        if (instance == null) {
+            instance = new User(0, "", "", "", "");
+        }
+        return instance;
+    }
+    public User setUserInfo(int id, String name, String email, String address, String phone) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
+        return this;
+    }
+    private User(int id, String name, String email, String address, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -16,9 +41,9 @@ public class User {
         this.phone = phone;
     }
 
-    public User cloneInformation() {
-        return new User(this.id, this.name, this.email, this.address, this.phone);
-    }
+//    public User cloneInformation() {
+//        return new User(this.id, this.name, this.email, this.address, this.phone);
+//    }
     
     // override toString method
     @Override

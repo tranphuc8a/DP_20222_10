@@ -9,7 +9,7 @@ import java.sql.Connection;
 import utils.*;
 
 public class AIMSDB {
-
+    // lớp này đã sử dụng design pattern: singleton
 	private static Logger LOGGER = Utils.getLogger(Connection.class.getName());
 	private static Connection connect;
 	// TODO: refactor Utils -> limit connections

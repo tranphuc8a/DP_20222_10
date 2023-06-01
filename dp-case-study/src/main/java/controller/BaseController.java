@@ -12,14 +12,18 @@ import entity.media.Media;
  */
 // Communicational cohesion: The methods that work with the shared data SessionInformation.cartInstance
 public class BaseController {
+    /* SRP:
+        Đang có 2 trách nhiệm ở đây:
+          - Trách nhiệm quản lý cart
+          - Trách nhiệm chính của lớp này là định nghĩa 1 khuôn dạng chung nhất cho các controller cụ thể
+     */
     /**
      * The method checks whether the Media in Cart, if it were in, we will return the CartMedia else return null
      * @param media
      * @return CartMedia or null
      */
     public CartItem checkMediaInCart(Media media){
-        // Common coupling: cartInstance
-        return SessionInformation.cartInstance.checkMediaInCart(media);
+        return SessionInformation.getCartInstance().checkMediaInCart(media); //biến cartInstance vi phạm common coupling
     }
 
     /**
@@ -27,7 +31,6 @@ public class BaseController {
      * @return List[CartMedia]
      */
     public List getListCartMedia(){
-        // Common coupling: cartInstance
-        return SessionInformation.cartInstance.getListMedia();
+        return SessionInformation.getCartInstance().getListMedia();
     }
 }

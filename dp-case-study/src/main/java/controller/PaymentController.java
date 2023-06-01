@@ -106,6 +106,6 @@ public class PaymentController extends BaseController {
 	}
 
 	public void emptyCart(){
-        SessionInformation.cartInstance.emptyCart(); //cartInstance violated common coupling
+        SessionInformation.getCartInstance().emptyCart(); //biến cartInstance vi phạm common coupling
     }
 }

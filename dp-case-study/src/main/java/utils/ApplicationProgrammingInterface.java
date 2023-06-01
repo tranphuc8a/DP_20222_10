@@ -17,33 +17,47 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.logging.Logger;
 
+<<<<<<< HEAD
 public class ApplicationProgrammingInterface {
 	// SRP: get() and post() have different responsibilities
 	// OCP: difficult to extend when only 2 methods get() and post() are supported
 	// solution: split into GetAPI, PostAPI classes and extend this API class and
 	// override excute() method together
 	// Coincidental cohesion
-	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-	private static Logger LOGGER = Utils.getLogger(Utils.class.getName());
+=======
+public abstract class ApplicationProgrammingInterface {
+	// SRP: get() và post() có trách nhiệm khác nhau
+	// OCP: khó mở rộng khi chỉ hỗ trợ 2 phương thức get() và post()
 
+	/*
+		solution: template method: execute(url, data)
+		tách vào các lớp GetAPI, PostAPI cùng extends lớp ApplicationProgrammingInterface
+	*/
+>>>>>>> 6a2dc9d22c9faa089d86dd247f32b9dde3ee87cd
+	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	protected static Logger LOGGER = Utils.getLogger(Utils.class.getName());
+
+<<<<<<< HEAD
 	public static String get(String url, String token) throws Exception {
 		LOGGER.info("Request URL: " + url + "\n");
 		// Procedural cohesion
 		HttpURLConnection conn = setupConnection(url);
+=======
+	protected HttpURLConnection conn;
+>>>>>>> 6a2dc9d22c9faa089d86dd247f32b9dde3ee87cd
 
-		conn.setRequestMethod("GET");
-		conn.setRequestProperty("Authorization", "Bearer " + token);
-		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-		String inputLine;
-		StringBuilder respone = new StringBuilder(); // ising StringBuilder for the sake of memory and performance
-		while ((inputLine = in.readLine()) != null)
-			System.out.println(inputLine);
-		respone.append(inputLine + "\n");
-		in.close();
-		LOGGER.info("Respone Info: " + respone.substring(0, respone.length() - 1).toString());
-		return respone.substring(0, respone.length() - 1).toString();
+	public String execute(String url, String data) throws Exception {
+		allowMethods();
+		conn = setupConnection(url);
+		setRequestMethod();
+		setProperty(data);
+		writeDate(data);
+		sendData();
+		String response = readData();
+		return response;
 	}
 
+<<<<<<< HEAD
 	public static String post(String url, String data) throws IOException {
 		// Procedural cohesion
 		allowMethods("PATCH");
@@ -51,24 +65,69 @@ public class ApplicationProgrammingInterface {
 		conn.setRequestMethod("PATCH");
 		String payload = data;
 		LOGGER.info("Request Info:\nRequest URL: " + url + "\n" + "Payload Data: " + payload + "\n");
+=======
+	public void allowMethods() throws Exception{
+>>>>>>> 6a2dc9d22c9faa089d86dd247f32b9dde3ee87cd
 
-		Writer writer = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-		writer.write(payload);
-		writer.close();
-		BufferedReader in;
-		String inputLine;
-		if (conn.getResponseCode() / 100 == 2) {
-			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-		} else {
-			in = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-		}
-		StringBuilder response = new StringBuilder();
-		while ((inputLine = in.readLine()) != null)
-			response.append(inputLine);
-		in.close();
-		LOGGER.info("Respone Info: " + response.toString());
-		return response.toString();
 	}
+
+	public abstract void setRequestMethod() throws Exception;
+
+	public void setProperty(String data) throws Exception{
+
+	}
+
+	public void writeDate(String data) throws Exception{
+
+	}
+
+	public void sendData() throws Exception{
+
+	}
+
+	public abstract String readData() throws Exception;
+
+//	public static String get(String url, String token) throws Exception {
+//		LOGGER.info("Request URL: " + url + "\n");
+//		HttpURLConnection conn = setupConnection(url);
+//
+//		conn.setRequestMethod("GET");
+//		conn.setRequestProperty("Authorization", "Bearer " + token);
+//		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//		String inputLine;
+//		StringBuilder respone = new StringBuilder(); // ising StringBuilder for the sake of memory and performance
+//		while ((inputLine = in.readLine()) != null)
+//			System.out.println(inputLine);
+//		respone.append(inputLine + "\n");
+//		in.close();
+//		LOGGER.info("Respone Info: " + respone.substring(0, respone.length() - 1).toString());
+//		return respone.substring(0, respone.length() - 1).toString();
+//	}
+
+//	public static String post(String url, String data) throws IOException {
+//		allowMethods("PATCH");
+//		HttpURLConnection conn = setupConnection(url);
+//		conn.setRequestMethod("PATCH");
+//		String payload = data;
+//		LOGGER.info("Request Info:\nRequest URL: " + url + "\n" + "Payload Data: " + payload + "\n");
+//
+//		Writer writer = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+//		writer.write(payload);
+//		writer.close();
+//		BufferedReader in;
+//		String inputLine;
+//		if (conn.getResponseCode() / 100 == 2) {
+//			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//		} else {
+//			in = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+//		}
+//		StringBuilder response = new StringBuilder();
+//		while ((inputLine = in.readLine()) != null)
+//			response.append(inputLine);
+//		in.close();
+//		LOGGER.info("Respone Info: " + response.toString());
+//		return response.toString();
+//	}
 
 	private static HttpURLConnection setupConnection(String url) throws IOException {
 		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
@@ -78,7 +137,7 @@ public class ApplicationProgrammingInterface {
 		return conn;
 	}
 
-	private static void allowMethods(String... methods) {
+	protected static void allowMethods(String... methods) {
 		try {
 			// Content coupling
 			Field methodsField = HttpURLConnection.class.getDeclaredField("methods");

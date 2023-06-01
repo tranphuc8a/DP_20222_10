@@ -24,10 +24,10 @@ public class Order {
         this.tax = 0;
     }
 
+    //tại sao phải truyền cart trong khi vẫn dùng chung cart từ SessionInformation.cartInstance
     public Order(Cart cart) { //stamp coupling: biến cart chỉ dùng cart.calSubtotal() -> chỉ cần truyền tham số là subtotal thôi
         List<OrderItem> orderItems = new ArrayList<>();
-        // Common coupling: cartInstance
-        for (Object object : SessionInformation.cartInstance.getListMedia()) {
+        for (Object object : SessionInformation.getCartInstance().getListMedia()) { //biến cartInstance vi phạm common coupling
             CartItem cartItem = (CartItem) object;
             OrderItem orderItem = new OrderItem(cartItem.getMedia(),
                     cartItem.getQuantity(),

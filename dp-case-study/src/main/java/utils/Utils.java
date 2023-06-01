@@ -14,6 +14,7 @@ import java.util.logging.Logger;
  * @author nguyenlm Contains helper functions
  */
 public class Utils {
+	// SRP: Lớp này là GodClass khi nhận đa trách nhiệm :DateFormat và Logger
 
 	//Violate SRP
 	//coincidental cohesion: DATE_FORMATTER

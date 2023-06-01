@@ -30,6 +30,14 @@ public class PopupScreen extends BaseScreenHandler {
      * object duy nhất để
      * những công việc này
      */
+
+    /*
+    SRP: 3 hàm success, error, loading có 3 trách nhiệm khác nhau
+    OCP: Lớp đóng cho việc mở rộng các chức năng pop kiểu khác
+    Solution: Như solution của cohesion
+
+    */
+    
     @FXML
     ImageView icon;
 

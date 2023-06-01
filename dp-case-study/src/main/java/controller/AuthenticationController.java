@@ -42,18 +42,17 @@ public class AuthenticationController extends BaseController {
     public void login(String email, String password) throws Exception {
         try {
             User user = new UserDAO().authenticate(email, md5(password));
-            if (Objects.isNull(user))
-                throw new FailLoginException();
-            SessionInformation.mainUser = user; // Common coupling: mainUser
-            SessionInformation.expiredTime = LocalDateTime.now().plusHours(24); // Common coupling: expiredTime
+            if (Objects.isNull(user)) throw new FailLoginException();
+            SessionInformation.setMainUser(user); //biến mainUser vi phạm common coupling
+            SessionInformation.setExpiredTime(LocalDateTime.now().plusHours(24)); //biến expiredTime vi phạm common coupling
         } catch (SQLException ex) {
             throw new FailLoginException();
         }
     }
 
     public void logout() {
-        SessionInformation.mainUser = null; // Common coupling: mainUser
-        SessionInformation.expiredTime = null; // Common coupling: expiredTime
+        SessionInformation.setMainUser(null); //biến mainUser vi phạm common coupling
+        SessionInformation.setExpiredTime(null); //biến expiredTime vi phạm common coupling
     }
 
     // srp: this should be seperate to be another file
