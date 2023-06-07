@@ -13,7 +13,7 @@ import views.screen.ViewsConfig;
 import java.io.IOException;
 
 
-public class PopupScreen extends BaseScreenHandler {
+abstract public class PopupScreen extends BaseScreenHandler {
     /*
     Logical cohesion: success(), error(), loading()
     Solution:
@@ -43,27 +43,10 @@ public class PopupScreen extends BaseScreenHandler {
         super(stage, ViewsConfig.POPUP_PATH);
     }
 
-    private static PopupScreen popup(String message, String imagePath, Boolean undecorated) throws IOException{
-        PopupScreen popup = new PopupScreen(new Stage());
-        if (undecorated) popup.stage.initStyle(StageStyle.UNDECORATED);
-        popup.message.setText(message);
-        popup.setImage(imagePath);
-        return popup;
-    }
+    // factory method
+    abstract protected PopupScreen createPopup(String message) throws IOException;
 
-    public static void success(String message) throws IOException{
-        popup(message, ViewsConfig.IMAGE_PATH + "/" + "tickgreen.png", true)
-                .show(true);
-    }
-
-    public static void error(String message) throws IOException{
-        popup(message, ViewsConfig.IMAGE_PATH + "/" + "tickerror.png", false)
-                .show(false);
-    }
-
-    public static PopupScreen loading(String message) throws IOException{
-        return popup(message, ViewsConfig.IMAGE_PATH + "/" + "loading.gif", true);
-    }
+    abstract public void showPopup(String message) throws Exception;
 
     public void setImage(String path) {
         super.setImage(icon, path);

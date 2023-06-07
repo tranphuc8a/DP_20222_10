@@ -23,7 +23,9 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.cart.CartScreenHandler;
+import views.screen.popup.ErrorPopupScreen;
 import views.screen.popup.PopupScreen;
+import views.screen.popup.SuccessPopupScreen;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,10 +52,12 @@ public class LoginScreenHandler extends BaseScreenHandler{
             setupFunctionality();
         } catch (IOException ex) {
             LOGGER.info(ex.getMessage());
-            PopupScreen.error("Error when loading resources.");
+//            PopupScreen.error("Error when loading resources.");
+            ErrorPopupScreen.getInstance().showPopup("Error when loading resources.");
         } catch (Exception ex) {
             LOGGER.info(ex.getMessage());
-            PopupScreen.error(ex.getMessage());
+//            PopupScreen.error(ex.getMessage());
+            ErrorPopupScreen.getInstance().showPopup(ex.getMessage());
         }
     }
 
@@ -71,10 +75,12 @@ public class LoginScreenHandler extends BaseScreenHandler{
     void login(MouseEvent event) throws IOException, InterruptedException, SQLException {
         try {
             getBController().login(email.getText(), password.getText());
-            PopupScreen.success("Login Successfully!");
+//            PopupScreen.success("Login Successfully!");
+            SuccessPopupScreen.getInstance().showPopup("Login Successfully!");
             backToHomeScreen(event);
         } catch (Exception ex) {
-            PopupScreen.error(ex.getMessage());
+//            PopupScreen.error(ex.getMessage());
+            ErrorPopupScreen.getInstance().showPopup(ex.getMessage());
         }
     }
 

@@ -19,6 +19,7 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.invoice.InvoiceScreenHandler;
+import views.screen.popup.ErrorPopupScreen;
 import views.screen.popup.PopupScreen;
 
 import java.io.IOException;
@@ -59,10 +60,12 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 			setupFunctionality();
 		} catch (IOException ex) {
 			LOGGER.info(ex.getMessage());
-			PopupScreen.error("Error when loading resources.");
+//			PopupScreen.error("Error when loading resources.");
+			ErrorPopupScreen.getInstance().showPopup("Error when loading resources.");
 		} catch (Exception ex) {
 			LOGGER.info(ex.getMessage());
-			PopupScreen.error(ex.getMessage());
+//			PopupScreen.error(ex.getMessage());
+			ErrorPopupScreen.getInstance().showPopup(ex.getMessage());
 		}
 	}
 

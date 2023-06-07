@@ -18,6 +18,7 @@ abstract public class DAO {
 
     abstract public String setUpQueryAll();
 
+    // factory method
     abstract public List<?> readDataAll(ResultSet res) throws SQLException;
 
     public Object getById(int id) throws SQLException {
@@ -29,6 +30,7 @@ abstract public class DAO {
 
     abstract public String setUpQueryById(int id);
 
+    // factory method
     abstract public Object readDataById(ResultSet res, int id) throws SQLException;
 
     public void updateFieldById(int id, String field, Object value) throws SQLException {
