@@ -45,7 +45,7 @@ public class Media {
     }
 
     public int getQuantity() throws SQLException {
-        int updated_quantity = new MediaDAO().getMediaById(id).quantity;
+        int updated_quantity = ((Media) new MediaDAO().getById(id)).quantity;
         this.quantity = updated_quantity;
         return updated_quantity;
     }

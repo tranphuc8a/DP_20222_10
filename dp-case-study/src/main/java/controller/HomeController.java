@@ -18,6 +18,6 @@ public class HomeController extends BaseController {
      * @throws SQLException
      */
     public static List getAllMedia() throws SQLException{
-        return new MediaDAO().getAllMedia();
+        return new MediaDAO().getAll();
     }
 }

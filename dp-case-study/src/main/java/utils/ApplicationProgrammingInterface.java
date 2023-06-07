@@ -31,35 +31,29 @@ public abstract class ApplicationProgrammingInterface {
 	protected HttpURLConnection conn;
 
 	public String execute(String url, String data) throws Exception {
-		allowMethods();
 		conn = setupConnection(url);
 		setRequestMethod();
-		setProperty(data);
-		writeDate(data);
-		sendData();
-		String response = readData();
+		prepareData(data);
+		BufferedReader in = getBufferedReader();
+		String response = readData(in);
 		return response;
-	}
-
-	public void allowMethods() throws Exception{
-
 	}
 
 	public abstract void setRequestMethod() throws Exception;
 
-	public void setProperty(String data) throws Exception{
+	public abstract void prepareData(String data) throws Exception;
 
+	public abstract BufferedReader getBufferedReader() throws Exception;
+
+	public String readData(BufferedReader in) throws Exception {
+		String inputLine;
+		StringBuilder response = new StringBuilder();
+		while ((inputLine = in.readLine()) != null)
+			response.append(inputLine);
+		in.close();
+		LOGGER.info("Respone Info: " + response.toString());
+		return response.toString();
 	}
-
-	public void writeDate(String data) throws Exception{
-
-	}
-
-	public void sendData() throws Exception{
-
-	}
-
-	public abstract String readData() throws Exception;
 
 //	public static String get(String url, String token) throws Exception {
 //		LOGGER.info("Request URL: " + url + "\n");
@@ -103,7 +97,7 @@ public abstract class ApplicationProgrammingInterface {
 //		return response.toString();
 //	}
 
-	private static HttpURLConnection setupConnection(String url) throws IOException {
+	protected HttpURLConnection setupConnection(String url) throws IOException {
 		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 		conn.setDoInput(true);
 		conn.setDoOutput(true);
@@ -111,7 +105,7 @@ public abstract class ApplicationProgrammingInterface {
 		return conn;
 	}
 
-	protected static void allowMethods(String... methods) {
+	protected void allowMethods(String... methods) {
 		try {
 			Field methodsField = HttpURLConnection.class.getDeclaredField("methods"); //content coupling
 			methodsField.setAccessible(true);
