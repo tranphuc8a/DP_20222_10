@@ -1,13 +1,10 @@
 package views.screen.payment;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -15,11 +12,10 @@ import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.popup.ErrorPopupScreen;
-import views.screen.popup.PopupScreen;
 
 //temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class ResultScreenHandler extends BaseScreenHandler {
-	private static final Logger LOGGER = Utils.getLogger(PaymentScreenHandler.class.getName());
+	private static final Logger LOGGER = Utils.getLogger(CreditCardPaymentScreenHandler.class.getName());
 
 	private String result;
 	private String message;

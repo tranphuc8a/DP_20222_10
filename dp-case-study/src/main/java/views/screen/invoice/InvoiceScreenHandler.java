@@ -14,9 +14,8 @@ import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
-import views.screen.payment.PaymentScreenHandler;
+import views.screen.payment.CreditCardPaymentScreenHandler;
 import views.screen.popup.ErrorPopupScreen;
-import views.screen.popup.PopupScreen;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -107,7 +106,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 
 	@FXML
 	void confirmInvoice(MouseEvent event) throws IOException { // biến event vi phạm stamp coupling vì không được sử dụng
-		BaseScreenHandler paymentScreen = new PaymentScreenHandler(this.stage, ViewsConfig.PAYMENT_SCREEN_PATH, invoice);
+		BaseScreenHandler paymentScreen = new CreditCardPaymentScreenHandler(this.stage, ViewsConfig.PAYMENT_SCREEN_PATH, invoice);
 		paymentScreen.setBController(new PaymentController());
 		paymentScreen.setPreviousScreen(this);
 		paymentScreen.setHomeScreenHandler(homeScreenHandler);
