@@ -31,6 +31,7 @@ abstract public class PaymentScreenHandler extends BaseScreenHandler {
         this.invoice = (Invoice) dto;
     }
 
+    // factory method
     protected abstract PaymentMethod getPaymentMethod();
 
     protected void confirmToPayOrder() throws IOException{
