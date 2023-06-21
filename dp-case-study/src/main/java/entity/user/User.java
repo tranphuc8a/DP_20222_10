@@ -1,16 +1,12 @@
 package entity.user;
 
 public class User {
-<<<<<<< HEAD
-    // Functional cohesion
-=======
     /*
     Đối tượng của lớp User là duy nhất trong chương trình nên:
         + Chuyển thành singleton
         + Bỏ phương thức cloneInformation() đi
      */
 
->>>>>>> 6a2dc9d22c9faa089d86dd247f32b9dde3ee87cd
     private int id;
     private String name;
     private String email;

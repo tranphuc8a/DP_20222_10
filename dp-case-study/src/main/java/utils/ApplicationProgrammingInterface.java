@@ -32,37 +32,23 @@ public class ApplicationProgrammingInterface {
 		// Procedural cohesion
 		HttpURLConnection conn = setupConnection(url);
 
-		conn.setRequestMethod("GET");
-		conn.setRequestProperty("Authorization", "Bearer " + token);
-		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-		String inputLine;
-		StringBuilder respone = new StringBuilder(); // ising StringBuilder for the sake of memory and performance
-		while ((inputLine = in.readLine()) != null)
-			System.out.println(inputLine);
-		respone.append(inputLine + "\n");
-		in.close();
-		LOGGER.info("Respone Info: " + respone.substring(0, respone.length() - 1).toString());
-		return respone.substring(0, respone.length() - 1).toString();
+	public String execute(String url, String data) throws Exception {
+		conn = setupConnection(url);
+		setRequestMethod();
+		prepareData(data);
+		BufferedReader in = getBufferedReader();
+		String response = readData(in);
+		return response;
 	}
 
-	public static String post(String url, String data) throws IOException {
-		// Procedural cohesion
-		allowMethods("PATCH");
-		HttpURLConnection conn = setupConnection(url);
-		conn.setRequestMethod("PATCH");
-		String payload = data;
-		LOGGER.info("Request Info:\nRequest URL: " + url + "\n" + "Payload Data: " + payload + "\n");
+	public abstract void setRequestMethod() throws Exception;
 
-		Writer writer = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-		writer.write(payload);
-		writer.close();
-		BufferedReader in;
+	public abstract void prepareData(String data) throws Exception;
+
+	public abstract BufferedReader getBufferedReader() throws Exception;
+
+	public String readData(BufferedReader in) throws Exception {
 		String inputLine;
-		if (conn.getResponseCode() / 100 == 2) {
-			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-		} else {
-			in = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-		}
 		StringBuilder response = new StringBuilder();
 		while ((inputLine = in.readLine()) != null)
 			response.append(inputLine);
@@ -71,7 +57,49 @@ public class ApplicationProgrammingInterface {
 		return response.toString();
 	}
 
-	private static HttpURLConnection setupConnection(String url) throws IOException {
+//	public static String get(String url, String token) throws Exception {
+//		LOGGER.info("Request URL: " + url + "\n");
+//		HttpURLConnection conn = setupConnection(url);
+//
+//		conn.setRequestMethod("GET");
+//		conn.setRequestProperty("Authorization", "Bearer " + token);
+//		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//		String inputLine;
+//		StringBuilder respone = new StringBuilder(); // ising StringBuilder for the sake of memory and performance
+//		while ((inputLine = in.readLine()) != null)
+//			System.out.println(inputLine);
+//		respone.append(inputLine + "\n");
+//		in.close();
+//		LOGGER.info("Respone Info: " + respone.substring(0, respone.length() - 1).toString());
+//		return respone.substring(0, respone.length() - 1).toString();
+//	}
+
+//	public static String post(String url, String data) throws IOException {
+//		allowMethods("PATCH");
+//		HttpURLConnection conn = setupConnection(url);
+//		conn.setRequestMethod("PATCH");
+//		String payload = data;
+//		LOGGER.info("Request Info:\nRequest URL: " + url + "\n" + "Payload Data: " + payload + "\n");
+//
+//		Writer writer = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+//		writer.write(payload);
+//		writer.close();
+//		BufferedReader in;
+//		String inputLine;
+//		if (conn.getResponseCode() / 100 == 2) {
+//			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//		} else {
+//			in = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+//		}
+//		StringBuilder response = new StringBuilder();
+//		while ((inputLine = in.readLine()) != null)
+//			response.append(inputLine);
+//		in.close();
+//		LOGGER.info("Respone Info: " + response.toString());
+//		return response.toString();
+//	}
+
+	protected HttpURLConnection setupConnection(String url) throws IOException {
 		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 		conn.setDoInput(true);
 		conn.setDoOutput(true);
@@ -79,7 +107,7 @@ public class ApplicationProgrammingInterface {
 		return conn;
 	}
 
-	private static void allowMethods(String... methods) {
+	protected void allowMethods(String... methods) {
 		try {
 			// Content coupling
 			Field methodsField = HttpURLConnection.class.getDeclaredField("methods");

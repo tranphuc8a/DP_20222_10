@@ -14,8 +14,8 @@ import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
-import views.screen.payment.PaymentScreenHandler;
-import views.screen.popup.PopupScreen;
+import views.screen.payment.CreditCardPaymentScreenHandler;
+import views.screen.popup.ErrorPopupScreen;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -66,10 +66,12 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 			setupFunctionality();
 		} catch (IOException ex) {
 			LOGGER.info(ex.getMessage());
-			PopupScreen.error("Error when loading resources.");
+//			PopupScreen.error("Error when loading resources.");
+			ErrorPopupScreen.getInstance().showPopup("Error when loading resources.");
 		} catch (Exception ex) {
 			LOGGER.info(ex.getMessage());
-			PopupScreen.error(ex.getMessage());
+//			PopupScreen.error(ex.getMessage());
+			ErrorPopupScreen.getInstance().showPopup(ex.getMessage());
 		}
 	}
 
@@ -105,9 +107,8 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 	}
 
 	@FXML
-	// Stamp coupling: event
-	void confirmInvoice(MouseEvent event) throws IOException {
-		BaseScreenHandler paymentScreen = new PaymentScreenHandler(this.stage, ViewsConfig.PAYMENT_SCREEN_PATH, invoice);
+	void confirmInvoice(MouseEvent event) throws IOException { // biến event vi phạm stamp coupling vì không được sử dụng
+		BaseScreenHandler paymentScreen = new CreditCardPaymentScreenHandler(this.stage, ViewsConfig.PAYMENT_SCREEN_PATH, invoice);
 		paymentScreen.setBController(new PaymentController());
 		paymentScreen.setPreviousScreen(this);
 		paymentScreen.setHomeScreenHandler(homeScreenHandler);

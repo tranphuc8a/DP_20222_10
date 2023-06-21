@@ -12,9 +12,14 @@ import views.screen.ViewsConfig;
 
 import java.io.IOException;
 
+<<<<<<< HEAD
 public class PopupScreen extends BaseScreenHandler {
     // SRP: 3 hàm success, error, loading có 3 trách nhiệm khác nhau
     // OCP: Lớp đóng cho việc mở rộng các chức năng pop kiểu khác
+=======
+
+abstract public class PopupScreen extends BaseScreenHandler {
+>>>>>>> 16366f343deff7759ed748047943d6e0bde4dbf6
     /*
      * Logical cohesion: success(), error(), loading()
      * Solution:
@@ -48,28 +53,9 @@ public class PopupScreen extends BaseScreenHandler {
         super(stage, ViewsConfig.POPUP_PATH);
     }
 
-    private static PopupScreen popup(String message, String imagePath, Boolean undecorated) throws IOException {
-        PopupScreen popup = new PopupScreen(new Stage());
-        if (undecorated)
-            popup.stage.initStyle(StageStyle.UNDECORATED);
-        popup.message.setText(message);
-        popup.setImage(imagePath);
-        return popup;
-    }
+    abstract protected PopupScreen createPopup(String message) throws IOException;
 
-    public static void success(String message) throws IOException {
-        popup(message, ViewsConfig.IMAGE_PATH + "/" + "tickgreen.png", true)
-                .show(true);
-    }
-
-    public static void error(String message) throws IOException {
-        popup(message, ViewsConfig.IMAGE_PATH + "/" + "tickerror.png", false)
-                .show(false);
-    }
-
-    public static PopupScreen loading(String message) throws IOException {
-        return popup(message, ViewsConfig.IMAGE_PATH + "/" + "loading.gif", true);
-    }
+    abstract public void showPopup(String message) throws Exception;
 
     public void setImage(String path) {
         super.setImage(icon, path);

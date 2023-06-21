@@ -7,21 +7,35 @@ import entity.media.Media;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author
  */
-// Communicational cohesion
-public class DVDDAO extends MediaDAO {
-    //LSP: method getMediaById() change the behavior of MediaDao
+public class DVDDAO extends DAO {
     @Override
-    public Media getMediaById(int id) throws SQLException {
-        String sql = "SELECT * FROM "+
+    public String setUpQueryAll() {
+        // will develop later
+        return null;
+    }
+
+    @Override
+    public List<DVD> readDataAll(ResultSet res) throws SQLException {
+        // will develop later
+        return null;
+    }
+
+    @Override
+    public String setUpQueryById(int id) {
+        return "SELECT * FROM "+
                 "aims.DVD " +
                 "INNER JOIN aims.Media " +
                 "ON Media.id = DVD.id " +
                 "where Media.id = " + id + ";";
-        ResultSet res = AIMSDB.getConnection().createStatement().executeQuery(sql);
+    }
+
+    @Override
+    public DVD readDataById(ResultSet res, int id) throws SQLException {
         if(res.next()) {
 
             // from media table
@@ -45,5 +59,11 @@ public class DVDDAO extends MediaDAO {
         } else {
             throw new SQLException();
         }
+    }
+
+    @Override
+    public String setUpQueryUpdateById(int id, String type, String field, Object value) {
+        // will develop later
+        return null;
     }
 }

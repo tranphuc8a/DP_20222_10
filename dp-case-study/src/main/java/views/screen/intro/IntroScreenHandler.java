@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
+import views.screen.popup.ErrorPopupScreen;
 import views.screen.popup.PopupScreen;
 
 //temporal cohesion: ở các hàm setupData() và setupFunctionality()
@@ -31,10 +32,12 @@ public class IntroScreenHandler extends BaseScreenHandler {
             setupFunctionality();
         } catch (IOException ex) {
             LOGGER.info(ex.getMessage());
-            PopupScreen.error("Error when loading resources.");
+//            PopupScreen.error("Error when loading resources.");
+            ErrorPopupScreen.getInstance().showPopup("Error when loading resources.");
         } catch (Exception ex) {
             LOGGER.info(ex.getMessage());
-            PopupScreen.error(ex.getMessage());
+//            PopupScreen.error(ex.getMessage());
+            ErrorPopupScreen.getInstance().showPopup(ex.getMessage());
         }
     }
 

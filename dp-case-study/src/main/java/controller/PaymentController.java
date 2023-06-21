@@ -7,8 +7,9 @@ import java.util.Map;
 import common.exception.InvalidCardException;
 import common.exception.PaymentException;
 import common.exception.UnrecognizedException;
-import entity.cart.Cart;
+import entity.payment.Card;
 import entity.payment.CreditCard;
+import entity.payment.PaymentMethod;
 import entity.payment.PaymentTransaction;
 import subsystem.InterbankInterface;
 import subsystem.InterbankSubsystem;
@@ -26,7 +27,7 @@ public class PaymentController extends BaseController {
 	/**
 	 * Represent the card used for payment
 	 */
-	private CreditCard card;
+	private PaymentMethod paymentMethod;
 
 	/**
 	 * Represent the Interbank subsystem
@@ -44,8 +45,12 @@ public class PaymentController extends BaseController {
 	 * @throws InvalidCardException - if the string does not represent a valid date
 	 *                              in the expected format
 	 */
+<<<<<<< HEAD
 	//procedural cohesion: this is one step in pay procedure
 	private String getExpirationDate(String date) throws InvalidCardException {
+=======
+	public String getExpirationDate(String date) throws InvalidCardException {
+>>>>>>> 16366f343deff7759ed748047943d6e0bde4dbf6
 		String[] strs = date.split("/");
 		if (strs.length != 2) {
 			throw new InvalidCardException();
@@ -75,27 +80,29 @@ public class PaymentController extends BaseController {
 	 * 
 	 * @param amount         - the amount to pay
 	 * @param contents       - the transaction contents
-	 * @param cardNumber     - the card number
-	 * @param cardHolderName - the card holder name
-	 * @param expirationDate - the expiration date in the format "mm/yy"
-	 * @param securityCode   - the cvv/cvc code of the credit card
+	 * @param paymentMethod  - the paymentMethod
 	 * @return {@link Map Map} represent the payment result with a
 	 *         message.
 	 */
+<<<<<<< HEAD
 	//procedural cohesion: next step after authorized
 	public Map<String, String> payOrder(int amount, String contents, String cardNumber, String cardHolderName,
 			String expirationDate, String securityCode) {
+=======
+	public Map<String, String> payOrder(int amount, String contents, PaymentMethod paymentMethod) {
+>>>>>>> 16366f343deff7759ed748047943d6e0bde4dbf6
 		Map<String, String> result = new Hashtable<String, String>();
 		result.put("RESULT", "PAYMENT FAILED!");
 		try {
-			this.card = new CreditCard(
-					cardNumber,
-					cardHolderName,
-					getExpirationDate(expirationDate),
-					Integer.parseInt(securityCode));
+//			this.paymentMethod = new CreditCard(
+//					cardNumber,
+//					cardHolderName,
+//					getExpirationDate(expirationDate),
+//					Integer.parseInt(securityCode));
+			this.paymentMethod = paymentMethod;
 
 			this.interbank = new InterbankSubsystem();
-			PaymentTransaction transaction = interbank.payOrder(card, amount, contents);
+			PaymentTransaction transaction = interbank.payOrder((Card) paymentMethod, amount, contents);
 
 			result.put("RESULT", "PAYMENT SUCCESSFUL!");
 			result.put("MESSAGE", "You have successfully paid the order!");

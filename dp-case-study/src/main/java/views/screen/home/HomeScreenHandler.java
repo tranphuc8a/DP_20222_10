@@ -33,7 +33,9 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.cart.CartScreenHandler;
+import views.screen.popup.ErrorPopupScreen;
 import views.screen.popup.PopupScreen;
+import views.screen.popup.SuccessPopupScreen;
 
 //temporal cohesion: ở các hàm setupData() và setupFunctionality()
 
@@ -86,10 +88,12 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             setupFunctionality();
         } catch (IOException ex) {
             LOGGER.info(ex.getMessage());
-            PopupScreen.error("Error when loading resources.");
+//            PopupScreen.error("Error when loading resources.");
+            ErrorPopupScreen.getInstance().showPopup("Error when loading resources.");
         } catch (Exception ex) {
             LOGGER.info(ex.getMessage());
-            PopupScreen.error(ex.getMessage());
+//            PopupScreen.error(ex.getMessage());
+            ErrorPopupScreen.getInstance().showPopup(ex.getMessage());
         }
     }
 
@@ -246,12 +250,14 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             // subtract the quantity and redisplay
             media.setQuantity(media.getQuantity() - requestQuantity);
             numMediaInCart.setText(cart.getTotalMedia() + " media");
-            PopupScreen.success("The media " + media.getTitle() + " added to Cart");
+//            PopupScreen.success("The media " + media.getTitle() + " added to Cart");
+            SuccessPopupScreen.getInstance().showPopup("The media " + media.getTitle() + " added to Cart");
         } catch (MediaNotAvailableException exp) {
             try {
                 String message = "Not enough media:\nRequired: " + requestQuantity + "\nAvail: " + media.getQuantity();
                 LOGGER.severe(message);
-                PopupScreen.error(message);
+//                PopupScreen.error(message);
+                ErrorPopupScreen.getInstance().showPopup(message);
             } catch (Exception e) {
                 LOGGER.severe("Cannot add media to cart: ");
             }
@@ -272,7 +278,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             loginScreen.show();
         } catch (Exception ex) {
             try {
-                PopupScreen.error("Cant trigger Login");
+//                PopupScreen.error("Cant trigger Login");
+                ErrorPopupScreen.getInstance().showPopup("Cant trigger Login");
             } catch (Exception ex1) {
                 LOGGER.severe("Cannot login");
                 ex.printStackTrace();
