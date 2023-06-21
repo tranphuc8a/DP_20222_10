@@ -15,11 +15,11 @@ public class MediaDAOFactory {
 
     public static final MediaDAO getMediaDAO(MediaType mediaType) throws SQLException {
         switch (mediaType) {
-            case Book:
+            case BookDAO:
                 return new BookDAO();
-            case CD:
+            case CDDAO:
                 return new CDDAO();
-            case DVD:
+            case DVDDAO:
                 return new DVDDAO();
             default:
                 throw new IllegalArgumentException("This media type is unsupported");

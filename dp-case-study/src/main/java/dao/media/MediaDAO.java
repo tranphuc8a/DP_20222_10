@@ -33,21 +33,7 @@ public class MediaDAO {
     }
 
     public Media getMediaById(int id) throws SQLException {
-        String sql = "SELECT * FROM Media ;";
-        Statement stm = AIMSDB.getConnection().createStatement();
-        ResultSet res = stm.executeQuery(sql);
-
-        if (res.next()) {
-            return new Media(
-                    res.getInt("id"),
-                    res.getString("title"),
-                    res.getInt("quantity"),
-                    res.getString("category"),
-                    res.getString("imageUrl"),
-                    res.getInt("price"),
-                    res.getString("type"));
-        }
-        return null;
+       return;
     }
 
     // Stamp coupling: tbname

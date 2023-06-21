@@ -8,9 +8,6 @@ import java.sql.SQLException;
  * @author nguyenlm
  */
 
-
-
-
     public enum MediaType {
         Book, CD, DVD;  
     }

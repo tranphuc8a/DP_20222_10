@@ -24,7 +24,6 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 	protected final Stage stage;
 
 	// DIP: lớp cha BaseScreenHandler đang phụ thuộc (association) vào lớp con HomeScreenHandler
-	protected HomeScreenHandler homeScreenHandler;
 	protected Hashtable<String, String> messages;
 	private BaseController bController;
 
@@ -64,9 +63,4 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 	public void forward(Hashtable messages) {
 		this.messages = messages;
 	}
-
-	public void setHomeScreenHandler(HomeScreenHandler HomeScreenHandler) {
-		this.homeScreenHandler = HomeScreenHandler;
-	}
-
 }
