@@ -22,10 +22,10 @@ public class Book extends Media {
 
     }
 
-    public Book(int id, String title, String category, int price, int quantity, String type, String author,
+    public Book(int id, String title, String category, String url, int price, int quantity, String type, String author,
             String coverType, String publisher, Date publishDate, int numOfPages, String language,
             String bookCategory) throws SQLException{
-        super(id, title, category, price, quantity, type);
+        super(id, title, quantity, category, url, price, type);
         this.author = author;
         this.coverType = coverType;
         this.publisher = publisher;

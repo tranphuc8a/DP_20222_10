@@ -2,17 +2,31 @@ package dao.media;
 
 import entity.db.AIMSDB;
 import entity.media.Media;
+import views.screen.popup.ErrorPopupScreen;
+import entity.media.*;
 
+import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author
  */
 public class MediaDAO extends DAO{
+    public static HashMap<String, String> classNameMap = new HashMap<>();
+
+    static {
+        ArrayList<String> listClassName = new ArrayList<String>(Arrays.asList("Book", "CD", "DVD"));
+        ArrayList<String> type = new ArrayList<String>(Arrays.asList("book", "cd", "dvd"));
+
+        for (int i = 0; i < listClassName.size(); i++) {
+            classNameMap.put(type.get(i), listClassName.get(i));
+        }
+    }
+
     @Override
     public String setUpQueryAll() {
         return "select * from Media";
@@ -31,6 +45,19 @@ public class MediaDAO extends DAO{
                     res.getInt("price"),
                     res.getString("type"));
             medium.add(media);
+
+            // reflection
+//            String type = res.getString("type");
+//            String classNameDAO = "dao.media." + classNameMap.get(type) + "DAO";
+//            try {
+//                Class<?> clazz = Class.forName(classNameDAO);
+//                Constructor<?> constructor = clazz.getConstructor();
+//                DAO dao = (DAO) constructor.newInstance();
+//                Media media = (Media) dao.getById(id);
+//                medium.add(media);
+//            } catch (Exception e) {
+//                System.out.println(e.getMessage());
+//            }
         }
         return medium;
     }
@@ -38,7 +65,7 @@ public class MediaDAO extends DAO{
     @Override
     public String setUpQueryById(int id) {
         // will develop later
-        return "SELECT * FROM Media ;";
+        return "SELECT * FROM Media WHERE id = " + id + ";";
     }
 
     @Override
@@ -53,17 +80,46 @@ public class MediaDAO extends DAO{
                     res.getInt("price"),
                     res.getString("type"));
         }
+
+        // reflection
+//        if (res.next()) {
+//            String type = res.getString("type");
+//            String classNameDAO = "dao.media." + classNameMap.get(type) + "DAO";
+//            try {
+//                Class<?> clazz = Class.forName(classNameDAO);
+//                Constructor<?> constructor = clazz.getConstructor();
+//                DAO dao = (DAO) constructor.newInstance();
+//                Media media = (Media) dao.getById(id);
+//                return media;
+//            } catch (Exception e) {
+//                System.out.println(e.getMessage());
+//                return null;
+//            }
+//        }
+
         return null;
     }
 
+
     @Override
-    public String setUpQueryUpdateById(int id, String field, Object value) {
-        if (value instanceof String){
-            value = "\"" + value + "\"";
+    public String setUpQueryUpdateById(int id, String type, String field, Object value) {
+//        if (value instanceof String){
+//            value = "\"" + value + "\"";
+//        }
+//        return " update Media set" + " "
+//                + field + "=" + value + " "
+//                + "where id=" + id + ";";
+        // reflection
+        String classNameDAO = "dao.media." + classNameMap.get(type) + "DAO";
+        try {
+            Class<?> clazz = Class.forName(classNameDAO);
+            Constructor<?> constructor = clazz.getConstructor();
+            DAO dao = (DAO) constructor.newInstance();
+            return dao.setUpQueryUpdateById(id, type, field, value);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
-        return " update Media set" + " "
-                + field + "=" + value + " "
-                + "where id=" + id + ";";
     }
 //    public List getAllMedia() throws SQLException {
 //        Statement stm = AIMSDB.getConnection().createStatement();

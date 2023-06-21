@@ -33,12 +33,12 @@ abstract public class DAO {
     // factory method
     abstract public Object readDataById(ResultSet res, int id) throws SQLException;
 
-    public void updateFieldById(int id, String field, Object value) throws SQLException {
+    public void updateFieldById(int id, String type, String field, Object value) throws SQLException {
         Statement stm = AIMSDB.getConnection().createStatement();
-        String query = setUpQueryUpdateById(id, field, value);
+        String query = setUpQueryUpdateById(id, type, field, value);
         stm.executeUpdate(query);
     }
-    abstract public String setUpQueryUpdateById(int id, String field, Object value);
+    abstract public String setUpQueryUpdateById(int id, String type, String field, Object value);
 
 }
 

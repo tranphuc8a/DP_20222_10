@@ -60,7 +60,7 @@ public class CDDAO extends DAO {
     }
 
     @Override
-    public String setUpQueryUpdateById(int id, String field, Object value) {
+    public String setUpQueryUpdateById(int id, String type, String field, Object value) {
         // will develop later
         return null;
     }

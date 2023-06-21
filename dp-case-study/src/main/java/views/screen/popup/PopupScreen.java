@@ -43,7 +43,6 @@ abstract public class PopupScreen extends BaseScreenHandler {
         super(stage, ViewsConfig.POPUP_PATH);
     }
 
-    // factory method
     abstract protected PopupScreen createPopup(String message) throws IOException;
 
     abstract public void showPopup(String message) throws Exception;
