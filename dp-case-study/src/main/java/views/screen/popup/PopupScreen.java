@@ -12,14 +12,7 @@ import views.screen.ViewsConfig;
 
 import java.io.IOException;
 
-<<<<<<< HEAD
-public class PopupScreen extends BaseScreenHandler {
-    // SRP: 3 hàm success, error, loading có 3 trách nhiệm khác nhau
-    // OCP: Lớp đóng cho việc mở rộng các chức năng pop kiểu khác
-=======
-
 abstract public class PopupScreen extends BaseScreenHandler {
->>>>>>> 16366f343deff7759ed748047943d6e0bde4dbf6
     /*
      * Logical cohesion: success(), error(), loading()
      * Solution:
@@ -37,12 +30,12 @@ abstract public class PopupScreen extends BaseScreenHandler {
      */
 
     /*
-    SRP: 3 hàm success, error, loading có 3 trách nhiệm khác nhau
-    OCP: Lớp đóng cho việc mở rộng các chức năng pop kiểu khác
-    Solution: Như solution của cohesion
+     * SRP: 3 hàm success, error, loading có 3 trách nhiệm khác nhau
+     * OCP: Lớp đóng cho việc mở rộng các chức năng pop kiểu khác
+     * Solution: Như solution của cohesion
+     * 
+     */
 
-    */
-    
     @FXML
     ImageView icon;
 

@@ -14,7 +14,6 @@ import entity.payment.PaymentTransaction;
 import subsystem.InterbankInterface;
 import subsystem.InterbankSubsystem;
 
-
 /**
  * This {@code PaymentController} class control the flow of the payment process
  * in our AIMS Software.
@@ -45,12 +44,7 @@ public class PaymentController extends BaseController {
 	 * @throws InvalidCardException - if the string does not represent a valid date
 	 *                              in the expected format
 	 */
-<<<<<<< HEAD
-	//procedural cohesion: this is one step in pay procedure
-	private String getExpirationDate(String date) throws InvalidCardException {
-=======
 	public String getExpirationDate(String date) throws InvalidCardException {
->>>>>>> 16366f343deff7759ed748047943d6e0bde4dbf6
 		String[] strs = date.split("/");
 		if (strs.length != 2) {
 			throw new InvalidCardException();
@@ -78,27 +72,21 @@ public class PaymentController extends BaseController {
 	/**
 	 * Pay order, and then return the result with a message.
 	 * 
-	 * @param amount         - the amount to pay
-	 * @param contents       - the transaction contents
-	 * @param paymentMethod  - the paymentMethod
+	 * @param amount        - the amount to pay
+	 * @param contents      - the transaction contents
+	 * @param paymentMethod - the paymentMethod
 	 * @return {@link Map Map} represent the payment result with a
 	 *         message.
 	 */
-<<<<<<< HEAD
-	//procedural cohesion: next step after authorized
-	public Map<String, String> payOrder(int amount, String contents, String cardNumber, String cardHolderName,
-			String expirationDate, String securityCode) {
-=======
 	public Map<String, String> payOrder(int amount, String contents, PaymentMethod paymentMethod) {
->>>>>>> 16366f343deff7759ed748047943d6e0bde4dbf6
 		Map<String, String> result = new Hashtable<String, String>();
 		result.put("RESULT", "PAYMENT FAILED!");
 		try {
-//			this.paymentMethod = new CreditCard(
-//					cardNumber,
-//					cardHolderName,
-//					getExpirationDate(expirationDate),
-//					Integer.parseInt(securityCode));
+			// this.paymentMethod = new CreditCard(
+			// cardNumber,
+			// cardHolderName,
+			// getExpirationDate(expirationDate),
+			// Integer.parseInt(securityCode));
 			this.paymentMethod = paymentMethod;
 
 			this.interbank = new InterbankSubsystem();
@@ -112,7 +100,7 @@ public class PaymentController extends BaseController {
 		return result;
 	}
 
-	public void emptyCart(){
-        SessionInformation.getCartInstance().emptyCart(); //biến cartInstance vi phạm common coupling
-    }
+	public void emptyCart() {
+		SessionInformation.getCartInstance().emptyCart(); // biến cartInstance vi phạm common coupling
+	}
 }

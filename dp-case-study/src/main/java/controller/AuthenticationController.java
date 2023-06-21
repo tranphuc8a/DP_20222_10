@@ -30,29 +30,31 @@ public class AuthenticationController extends BaseController {
 
     public User getMainUser() throws ExpiredSessionException {
         // Common coupling: mainUser, expiredTime
-        if (SessionInformation.mainUser == null || SessionInformation.expiredTime == null
-                || SessionInformation.expiredTime.isBefore(LocalDateTime.now())) {
+        if (SessionInformation.getMainUser() == null || SessionInformation.getExpiredTime() == null
+                || SessionInformation.getExpiredTime().isBefore(LocalDateTime.now())) {
             logout();
             throw new ExpiredSessionException();
             // Common coupling: mainUser
         } else
-            return SessionInformation.mainUser.cloneInformation();
+            return SessionInformation.getMainUser().cloneInformation();
     }
 
     public void login(String email, String password) throws Exception {
         try {
             User user = new UserDAO().authenticate(email, md5(password));
-            if (Objects.isNull(user)) throw new FailLoginException();
-            SessionInformation.setMainUser(user); //biến mainUser vi phạm common coupling
-            SessionInformation.setExpiredTime(LocalDateTime.now().plusHours(24)); //biến expiredTime vi phạm common coupling
+            if (Objects.isNull(user))
+                throw new FailLoginException();
+            SessionInformation.setMainUser(user); // biến mainUser vi phạm common coupling
+            SessionInformation.setExpiredTime(LocalDateTime.now().plusHours(24)); // biến expiredTime vi phạm common
+                                                                                  // coupling
         } catch (SQLException ex) {
             throw new FailLoginException();
         }
     }
 
     public void logout() {
-        SessionInformation.setMainUser(null); //biến mainUser vi phạm common coupling
-        SessionInformation.setExpiredTime(null); //biến expiredTime vi phạm common coupling
+        SessionInformation.setMainUser(null); // biến mainUser vi phạm common coupling
+        SessionInformation.setExpiredTime(null); // biến expiredTime vi phạm common coupling
     }
 
     // srp: this should be seperate to be another file

@@ -14,15 +14,6 @@ import java.util.List;
 /**
  * @author
  */
-<<<<<<< HEAD
-// Communicational cohesion
-public class BookDAO extends MediaDAO {
-    //LSP: method getMediaById() change the behavior of MediaDao
-    public Media getMediaById(int id) throws SQLException {
-        String sql = "SELECT * FROM "+
-                "aims.Book " +
-                "INNER JOIN aims.Media " +
-=======
 public class BookDAO extends DAO {
     @Override
     public String setUpQueryAll() {
@@ -38,18 +29,17 @@ public class BookDAO extends DAO {
 
     @Override
     public String setUpQueryById(int id) {
-//        return  "SELECT * FROM Book, Media Where Book.id = Media.id And Book.id = 38";
-        return "SELECT * FROM "+
+        // return "SELECT * FROM Book, Media Where Book.id = Media.id And Book.id = 38";
+        return "SELECT * FROM " +
                 "Book " +
                 "INNER JOIN Media " +
->>>>>>> 16366f343deff7759ed748047943d6e0bde4dbf6
                 "ON Media.id = Book.id " +
                 "where Media.id = " + id + ";";
     }
 
     @Override
-    public Book readDataById(ResultSet res, int id) throws SQLException{
-        if(res.next()) {
+    public Book readDataById(ResultSet res, int id) throws SQLException {
+        if (res.next()) {
 
             // from Media table
             String title = res.getString("title");
@@ -63,7 +53,7 @@ public class BookDAO extends DAO {
             String author = res.getString("author");
             String coverType = res.getString("coverType");
             String publisher = res.getString("publisher");
-//            Date publishDate = res.getDate("publishDate");
+            // Date publishDate = res.getDate("publishDate");
             Date publishDate = new Date();
             int numOfPages = res.getInt("numOfPages");
             String language = res.getString("language");

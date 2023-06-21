@@ -15,7 +15,8 @@ import views.screen.home.HomeScreenHandler;
 import views.screen.popup.PopupScreen;
 
 public abstract class BaseScreenHandler extends FXMLScreenHandler {
-	// DIP: lớp cha BaseScreenHandler đang phụ thuộc (association) vào lớp con HomeScreenHandler
+	// DIP: lớp cha BaseScreenHandler đang phụ thuộc (association) vào lớp con
+	// HomeScreenHandler
 	// Functional cohesion
 	private static final Logger LOGGER = Utils.getLogger(BaseScreenHandler.class.getName());
 
@@ -23,7 +24,8 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 	private BaseScreenHandler prev;
 	protected final Stage stage;
 
-	// DIP: lớp cha BaseScreenHandler đang phụ thuộc (association) vào lớp con HomeScreenHandler
+	// DIP: lớp cha BaseScreenHandler đang phụ thuộc (association) vào lớp con
+	// HomeScreenHandler
 	protected Hashtable<String, String> messages;
 	private BaseController bController;
 
@@ -52,11 +54,11 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 		this.stage.setTitle(string);
 	}
 
-	public void setBController(BaseController bController){
+	public void setBController(BaseController bController) {
 		this.bController = bController;
 	}
 
-	public BaseController getBController(){
+	public BaseController getBController() {
 		return this.bController;
 	}
 

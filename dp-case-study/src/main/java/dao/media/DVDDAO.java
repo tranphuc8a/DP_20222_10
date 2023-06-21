@@ -27,7 +27,7 @@ public class DVDDAO extends DAO {
 
     @Override
     public String setUpQueryById(int id) {
-        return "SELECT * FROM "+
+        return "SELECT * FROM " +
                 "aims.DVD " +
                 "INNER JOIN aims.Media " +
                 "ON Media.id = DVD.id " +
@@ -36,7 +36,7 @@ public class DVDDAO extends DAO {
 
     @Override
     public DVD readDataById(ResultSet res, int id) throws SQLException {
-        if(res.next()) {
+        if (res.next()) {
 
             // from media table
             String title = "";
@@ -54,7 +54,8 @@ public class DVDDAO extends DAO {
             Date releasedDate = res.getDate("releasedDate");
             String filmType = res.getString("filmType");
 
-            return new DVD(id, title, category, price, quantity, type, discType, director, runtime, studio, subtitles, releasedDate, filmType);
+            return new DVD(id, title, category, price, quantity, type, discType, director, runtime, studio, subtitles,
+                    releasedDate, filmType);
 
         } else {
             throw new SQLException();
