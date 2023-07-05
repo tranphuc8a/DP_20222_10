@@ -27,11 +27,11 @@ public class ApplicationProgrammingInterface {
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private static Logger LOGGER = Utils.getLogger(Utils.class.getName());
 
-	public static String get(String url, String token) throws Exception {
+	public String get(String url, String token) throws Exception {
 		LOGGER.info("Request URL: " + url + "\n");
 		// Procedural cohesion
 		HttpURLConnection conn = setupConnection(url);
-
+	}
 	public String execute(String url, String data) throws Exception {
 		conn = setupConnection(url);
 		setRequestMethod();
