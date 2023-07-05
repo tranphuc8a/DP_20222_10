@@ -3,7 +3,6 @@ package views.screen.payment;
 import controller.PaymentController;
 import entity.invoice.Invoice;
 import entity.payment.CreditCard;
-import entity.payment.PaymentMethod;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

@@ -9,4 +9,9 @@ public class Wallet extends PaymentMethod{
         this.accountNumber = accountNumber;
         this.branch = branch;
     }
+
+    @Override
+    public void pay(int amount, String contents) {
+        // temporily do nothing
+    }
 }

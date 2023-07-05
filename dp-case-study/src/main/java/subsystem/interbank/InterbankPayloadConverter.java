@@ -3,7 +3,7 @@ package subsystem.interbank;
 import common.exception.*;
 import entity.payment.Card;
 import entity.payment.CreditCard;
-import entity.payment.PaymentMethod;
+import entity.payment.Card;
 import entity.payment.PaymentTransaction;
 import utils.MyMap;
 
@@ -19,16 +19,16 @@ public class InterbankPayloadConverter {
 
     /**
      * Convert from native entity into interbank required format
-     * @param paymentMethod
+     * @param card
      * @param amount
      * @param contents
      * @return
      */
-    String convertToRequestPayload(PaymentMethod paymentMethod, int amount, String contents) {
+    String convertToRequestPayload(Card card, int amount, String contents) {
         Map<String, Object> transaction = new MyMap();
 
         try {
-            transaction.putAll(MyMap.toMyMap(paymentMethod));
+            transaction.putAll(MyMap.toMyMap(card));
         } catch (IllegalArgumentException | IllegalAccessException e) {
             // TODO Auto-generated catch block
             throw new InvalidCardException();
