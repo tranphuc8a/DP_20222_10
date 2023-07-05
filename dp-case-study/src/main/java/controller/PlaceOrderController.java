@@ -9,6 +9,8 @@ import entity.order.OrderItem;
 import entity.shipping.DeliveryInfo;
 import entity.shipping.ShippingConfigs;
 import org.example.DistanceCalculator;
+import utils.delivery.distance.DefaultDistanceMethod;
+import utils.delivery.shipping_fee.DefaultShippingFeeMethod;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -70,7 +72,8 @@ public class PlaceOrderController extends BaseController {
                 String.valueOf(info.get("province")),
                 String.valueOf(info.get("address")),
                 String.valueOf(info.get("instructions")),
-                new DistanceCalculator());
+                new DefaultDistanceMethod(),
+                new DefaultShippingFeeMethod());
         System.out.println(deliveryInfo.getProvince());
         return deliveryInfo;
     }

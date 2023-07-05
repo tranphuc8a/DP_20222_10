@@ -22,17 +22,19 @@ import subsystem.InterbankSubsystem;
  * @author hieud
  *
  */
+
+// context
 public class PaymentController extends BaseController {
 
 	/**
-	 * Represent the card used for payment
+	 * Represent the payment method used for payment
 	 */
 	private PaymentMethod paymentMethod;
 
 	/**
 	 * Represent the Interbank subsystem
 	 */
-	private InterbankInterface interbank;
+//	private InterbankInterface interbank;
 
 	/**
 	 * Validate the input date which should be in the format "mm/yy", and then
@@ -90,8 +92,9 @@ public class PaymentController extends BaseController {
 //					Integer.parseInt(securityCode));
 			this.paymentMethod = paymentMethod;
 
-			this.interbank = new InterbankSubsystem();
-			PaymentTransaction transaction = interbank.payOrder((Card) paymentMethod, amount, contents);
+			this.paymentMethod.pay(amount, contents);
+//			this.interbank = new InterbankSubsystem();
+//			PaymentTransaction transaction = interbank.payOrder(paymentMethod, amount, contents);
 
 			result.put("RESULT", "PAYMENT SUCCESSFUL!");
 			result.put("MESSAGE", "You have successfully paid the order!");
