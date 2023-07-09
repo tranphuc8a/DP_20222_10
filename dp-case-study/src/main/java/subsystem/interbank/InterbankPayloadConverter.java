@@ -29,11 +29,11 @@ public class InterbankPayloadConverter {
      * @param contents
      * @return
      */
-    String convertToRequestPayload(Card card, int amount, String contents) {
+    String convertToRequestPayload(PaymentTransaction paymentTransaction, int amount, String contents) {
         Map<String, Object> transaction = new MyMap();
 
         try {
-            transaction.putAll(MyMap.toMyMap(card));
+            transaction.putAll(MyMap.toMyMap(paymentTransaction));
         } catch (IllegalArgumentException | IllegalAccessException e) {
             // TODO Auto-generated catch block
             throw new InvalidCardException();
