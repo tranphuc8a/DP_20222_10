@@ -11,4 +11,16 @@ public class Card extends PaymentMethod{
         this.dateExpired = dateExpired;
         this.cvvCode = cvvCode;
     }
+
+    public String getOwner() {
+        return this.owner;
+    }
+
+    public String getDateExprired() {
+        return this.dateExpired;
+    }
+
+    public Number getCvvCode() {
+        return this.cvvCode;
+    }
 }

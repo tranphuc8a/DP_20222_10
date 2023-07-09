@@ -9,4 +9,16 @@ public class Wallet extends PaymentMethod{
         this.accountNumber = accountNumber;
         this.branch = branch;
     }
+
+        public String getOwner() {
+        return this.owner;
+    }
+
+    public String getAccountNumber() {
+        return this.accountNumber;
+    }
+
+    public String getBranch() {
+        return this.branch;
+    }
 }
