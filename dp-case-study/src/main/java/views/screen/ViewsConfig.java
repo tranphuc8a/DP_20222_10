@@ -13,7 +13,7 @@ import java.util.Locale;
 public class ViewsConfig {
 
     //Violate SRP: Should seperate function into difference module: TaxConfig, FontConfig,...
-    //coincidental cohesion: tất cả các thuộc tính về PATH
+    //Logical cohesion: tất cả các thuộc tính về PATH
     //solution: có thể tách vào 1 class PathConfig
     // static resource
     public static final String IMAGE_PATH = "src/main/resources/assets/images";
@@ -30,15 +30,15 @@ public class ViewsConfig {
     public static final String HOME_MEDIA_PATH = "/views/fxml/media_home.fxml";
     public static final String POPUP_PATH = "/views/fxml/popup.fxml";
 
-    //coincidental cohesion: PERCENT_VAT
+    //Logical cohesion: PERCENT_VAT
     //solution: có thể tách vào 1 class TaxConfig
     public static float PERCENT_VAT = 10;
 
-    //coincidental cohesion: REGULAR_FONT
+    //Logical cohesion: REGULAR_FONT
     //solution: có thể tách vào 1 class FontConfig
     public static Font REGULAR_FONT = Font.font("Segoe UI", FontWeight.NORMAL, FontPosture.REGULAR, 24);
 
-    //coincidental cohesion: getCurrencyFormat()
+    //Logical cohesion: getCurrencyFormat()
     //solution: có thể tách vào 1 class CurrencyFormatUtil
     public static String getCurrencyFormat(int num) {
         Locale vietnam = new Locale("vi", "VN");

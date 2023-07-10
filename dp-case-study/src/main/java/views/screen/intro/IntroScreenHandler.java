@@ -17,7 +17,6 @@ import views.screen.popup.PopupScreen;
 
 //temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class IntroScreenHandler extends BaseScreenHandler {
-    // Communicational cohesion
     private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName());
 
     @FXML

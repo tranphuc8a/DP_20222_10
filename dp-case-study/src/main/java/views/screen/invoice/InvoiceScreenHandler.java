@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 
 //temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class InvoiceScreenHandler extends BaseScreenHandler {
-  // Communicational cohesion
 	private static Logger LOGGER = Utils.getLogger(InvoiceScreenHandler.class.getName());
 
 	@FXML

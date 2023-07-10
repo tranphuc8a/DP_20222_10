@@ -18,7 +18,6 @@ import views.screen.popup.PopupScreen;
 
 //temporal cohesion: ở các hàm setupData() và setupFunctionality()
 public class ResultScreenHandler extends BaseScreenHandler {
-  // Communicational cohesion
 	private static final Logger LOGGER = Utils.getLogger(PaymentScreenHandler.class.getName());
 
 	private String result;
