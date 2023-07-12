@@ -13,11 +13,11 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Logger;
 
-abstract public class PaymentScreenHandler extends BaseScreenHandler {
-    private static final Logger LOGGER = Utils.getLogger(PaymentScreenHandler.class.getName());
+abstract public class WalletPaymentScreenHandler extends BaseScreenHandler {
+    private static final Logger LOGGER = Utils.getLogger(WalletPaymentScreenHandler.class.getName());
     protected Invoice invoice;
 
-    protected PaymentScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
+    protected WalletPaymentScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
         super(stage, screenPath);
         try {
             setupData(invoice);
@@ -33,7 +33,7 @@ abstract public class PaymentScreenHandler extends BaseScreenHandler {
     }
 
     // factory method
-    protected abstract PaymentMethod getPaymentMethod();
+    protected abstract PaymentMethod getWalletPaymentMethod();
 
     protected void confirmToPayOrder() throws IOException {
         String contents = "pay order";
@@ -41,11 +41,11 @@ abstract public class PaymentScreenHandler extends BaseScreenHandler {
         // Map<String, String> response = ctrl.payOrder(invoice.getAmount(), contents,
         // cardNumber.getText(), holderName.getText(),
         // expirationDate.getText(), securityCode.getText());
-        Map<String, String> response = ctrl.payOrder(invoice.getAmount(), contents, getPaymentMethod());
+        Map<String, String> response = ctrl.payOrder(invoice.getAmount(), contents, getWalletPaymentMethod());
 
         BaseScreenHandler resultScreen = new ResultScreenHandler(this.stage, ViewsConfig.RESULT_SCREEN_PATH, response);
         resultScreen.setPreviousScreen(this);
-        resultScreen.setHomeScreenHandler(homeScreenHandler);
+        //resultScreen.setHomeScreenHandler(homeScreenHandler);
         resultScreen.setScreenTitle("Result Screen");
         resultScreen.show();
     }

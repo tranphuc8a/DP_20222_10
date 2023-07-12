@@ -130,7 +130,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 			ShippingScreenHandler shippingScreenHandler = new ShippingScreenHandler(
 					this.stage, ViewsConfig.SHIPPING_SCREEN_PATH, order);
 			shippingScreenHandler.setPreviousScreen(this);
-			shippingScreenHandler.setHomeScreenHandler(homeScreenHandler);
+			//shippingScreenHandler.setHomeScreenHandler(homeScreenHandler);
 			shippingScreenHandler.setScreenTitle("Shipping Screen");
 			shippingScreenHandler.setBController(placeOrderController);
 			shippingScreenHandler.show();

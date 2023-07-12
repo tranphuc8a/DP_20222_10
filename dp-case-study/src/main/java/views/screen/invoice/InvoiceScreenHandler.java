@@ -111,7 +111,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 		BaseScreenHandler paymentScreen = new CreditCardPaymentScreenHandler(this.stage, ViewsConfig.PAYMENT_SCREEN_PATH, invoice);
 		paymentScreen.setBController(new PaymentController());
 		paymentScreen.setPreviousScreen(this);
-		paymentScreen.setHomeScreenHandler(homeScreenHandler);
+		//paymentScreen.setHomeScreenHandler(homeScreenHandler);
 		paymentScreen.setScreenTitle("Payment Screen");
 		paymentScreen.show();
 		LOGGER.info("Confirmed invoice");

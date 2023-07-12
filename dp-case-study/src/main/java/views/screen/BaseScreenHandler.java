@@ -21,6 +21,7 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 	private static final Logger LOGGER = Utils.getLogger(BaseScreenHandler.class.getName());
 
 	private Scene scene;
+	private HomeScreenHandler homeScreenHandler;
 	private BaseScreenHandler prev;
 	protected final Stage stage;
 
@@ -32,6 +33,11 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 	protected BaseScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(screenPath);
 		this.stage = stage;
+	}
+
+	public BaseScreenHandler() {
+		super();
+		stage = null;
 	}
 
 	public void setPreviousScreen(BaseScreenHandler prev) {
@@ -64,5 +70,13 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 
 	public void forward(Hashtable messages) {
 		this.messages = messages;
+	}
+
+	public void setHomeScreenHandler(HomeScreenHandler HomeScreenHandler) {
+		this.homeScreenHandler = HomeScreenHandler;
+	}
+
+	public HomeScreenHandler getHomeScreenHandler() {
+		return this.homeScreenHandler;
 	}
 }

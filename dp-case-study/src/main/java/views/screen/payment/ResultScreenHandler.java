@@ -61,6 +61,6 @@ public class ResultScreenHandler extends BaseScreenHandler {
 	@FXML
 	// Stamp coupling: event
 	void confirmPayment(MouseEvent event) throws IOException {
-		homeScreenHandler.show();
+		getHomeScreenHandler().show();
 	}
 }

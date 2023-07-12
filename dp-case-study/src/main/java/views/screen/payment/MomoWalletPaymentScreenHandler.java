@@ -2,6 +2,12 @@ package views.screen.payment;
 
 import entity.invoice.Invoice;
 import entity.payment.MomoWallet;
+import entity.payment.PaymentMethod;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.popup.ErrorPopupScreen;
@@ -9,8 +15,26 @@ import views.screen.popup.ErrorPopupScreen;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-public class MomoWalletPaymentScreenHandler extends PaymentScreenHandler {
+public class MomoWalletPaymentScreenHandler extends WalletPaymentScreenHandler {
     private static final Logger LOGGER = Utils.getLogger(MomoWalletPaymentScreenHandler.class.getName());
+
+    @FXML
+    private Button btnConfirmPayment;
+
+    @FXML
+    private ImageView loadingImage;
+
+    @FXML
+    private Label pageTitle;
+
+    @FXML
+    private TextField accountNumber;
+
+    @FXML
+    private TextField holderName;
+
+    @FXML
+    private TextField branch;
 
     public MomoWalletPaymentScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
         super(stage, screenPath, invoice);
@@ -26,8 +50,10 @@ public class MomoWalletPaymentScreenHandler extends PaymentScreenHandler {
     }
 
     @Override
-    protected MomoWallet getPaymentMethod() {
-        return new MomoWallet("Default owner", "00000000", "Default branch");
+    protected PaymentMethod getWalletPaymentMethod() {
+        return new MomoWallet(accountNumber.getText(),
+                holderName.getText(),
+                branch.getText());
     }
 
     protected void setupFunctionality() throws Exception {

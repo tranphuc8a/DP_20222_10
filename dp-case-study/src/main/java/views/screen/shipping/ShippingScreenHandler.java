@@ -99,7 +99,7 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		Invoice invoice = getBController().createInvoice(order);
 		BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, ViewsConfig.INVOICE_SCREEN_PATH, invoice);
 		InvoiceScreenHandler.setPreviousScreen(this);
-		InvoiceScreenHandler.setHomeScreenHandler(homeScreenHandler);
+		//InvoiceScreenHandler.setHomeScreenHandler(homeScreenHandler);
 		InvoiceScreenHandler.setScreenTitle("Invoice Screen");
 		InvoiceScreenHandler.setBController(getBController());
 		InvoiceScreenHandler.show();

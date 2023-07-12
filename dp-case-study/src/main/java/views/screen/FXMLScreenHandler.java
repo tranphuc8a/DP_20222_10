@@ -20,6 +20,9 @@ public class FXMLScreenHandler {
 		this.content = (AnchorPane) loader.load();
 	}
 
+	public FXMLScreenHandler() {
+	}
+
 	public AnchorPane getContent() {
 		return this.content;
 	}
