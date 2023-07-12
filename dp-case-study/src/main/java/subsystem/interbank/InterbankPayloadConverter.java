@@ -64,6 +64,7 @@ public class InterbankPayloadConverter {
         MyMap transaction = (MyMap) response.get("transaction");
         Card card = new CreditCard(
                 (String) transaction.get("cardCode"),
+                (String) transaction.get("issuingBank"),
                 (String) transaction.get("owner"),
                 (String) transaction.get("dateExpired"),
                 Integer.parseInt((String) transaction.get("cvvCode")));

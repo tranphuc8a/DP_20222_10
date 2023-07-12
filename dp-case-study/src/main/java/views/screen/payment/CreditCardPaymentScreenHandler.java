@@ -36,8 +36,11 @@ public class CreditCardPaymentScreenHandler extends PaymentScreenHandler {
 	private TextField cardNumber;
 
 	@FXML
-	private TextField holderName;
+	private TextField issuingBank;
 
+	@FXML
+	private TextField holderName;
+	
 	@FXML
 	private TextField expirationDate;
 
@@ -63,6 +66,7 @@ public class CreditCardPaymentScreenHandler extends PaymentScreenHandler {
 	protected CreditCard getPaymentMethod() {
 		return new CreditCard(
 				cardNumber.getText(),
+				issuingBank.getText(),
 				holderName.getText(),
 				((PaymentController) getBController()).getExpirationDate(expirationDate.getText()),
 				Integer.parseInt(securityCode.getText()));
