@@ -8,6 +8,10 @@ import entity.order.Order;
 import entity.order.OrderItem;
 import entity.shipping.DeliveryInfo;
 import entity.shipping.ShippingConfigs;
+import utils.deliveryUltils.AddressValidation;
+import utils.deliveryUltils.NameValidation;
+import utils.deliveryUltils.PhoneValidation;
+
 import org.example.DistanceCalculator;
 
 import java.io.IOException;
@@ -31,6 +35,10 @@ public class PlaceOrderController extends BaseController {
      * Singleton: use final
      */
     private static Logger LOGGER = utils.Utils.getLogger(PlaceOrderController.class.getName());
+
+    private AddressValidation addressValidation = new AddressValidation();
+    private PhoneValidation phoneValidation = new PhoneValidation();
+    private NameValidation nameValidation = new NameValidation();
 
     /**
      * This method checks the availability of product when user click PlaceOrder
@@ -102,42 +110,11 @@ public class PlaceOrderController extends BaseController {
 
     public void validateDeliveryInfo(HashMap<String, String> info)
             throws InterruptedException, IOException, InvalidDeliveryInfoException {
-        if (validatePhoneNumber(info.get("phone"))
-                || validateName(info.get("name"))
-                || validateAddress(info.get("address")))
+        if (this.phoneValidation.validate("phone")
+                || this.nameValidation.validate(info.get("name"))
+                || this.addressValidation.validate(info.get("address")))
             return;
         else
             throw new InvalidDeliveryInfoException();
-    }
-
-    public boolean validatePhoneNumber(String phoneNumber) {
-        if (phoneNumber.length() != 10)
-            return false;
-        if (!phoneNumber.startsWith("0"))
-            return false;
-        try {
-            Integer.parseInt(phoneNumber);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
-
-    public boolean validateName(String name) {
-        if (Objects.isNull(name))
-            return false;
-        String patternString = "^[a-zA-Z\\s]*$";
-        Pattern pattern = Pattern.compile(patternString);
-        Matcher matcher = pattern.matcher(name);
-        return matcher.matches();
-    }
-
-    public boolean validateAddress(String address) {
-        if (Objects.isNull(address))
-            return false;
-        String patternString = "^[a-zA-Z\\s]*$";
-        Pattern pattern = Pattern.compile(patternString);
-        Matcher matcher = pattern.matcher(address);
-        return matcher.matches();
     }
 }
