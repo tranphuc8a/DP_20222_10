@@ -1,6 +1,6 @@
 #  An Internet Media Store
 <p align="center">
-  <img src="src/main/resources/assets/images/aims_cover_image.png" />
+  <img src="dp-case-study/src/main/resources/assets/images/aims_cover_image.png" />
 </p>
 
 ## Getting Started
