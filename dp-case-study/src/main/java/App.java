@@ -1,18 +1,13 @@
-import java.io.File;
 import java.io.IOException;
 
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import views.screen.BaseScreenHandler;
-import views.screen.ViewsConfig;
+import views.screen.config.ViewPathsConfig;
 import views.screen.home.*;
 import views.screen.intro.IntroScreenHandler;
 
@@ -26,7 +21,7 @@ public class App extends Application {
 		try {
 
 			// initialize the scene
-			BaseScreenHandler introScreen = new IntroScreenHandler(primaryStage, ViewsConfig.INTRO_SCREEN_PATH);
+			BaseScreenHandler introScreen = new IntroScreenHandler(primaryStage, ViewPathsConfig.INTRO_SCREEN_PATH);
 			introScreen.show();
 
 			// Load splash screen with fade in effect
@@ -50,7 +45,7 @@ public class App extends Application {
 			// After fade out, load actual content
 			fadeOut.setOnFinished((e) -> {
 				try {
-					HomeScreenHandler homeHandler = new HomeScreenHandler(primaryStage, ViewsConfig.HOME_PATH);
+					HomeScreenHandler homeHandler = new HomeScreenHandler(primaryStage, ViewPathsConfig.HOME_PATH);
 					homeHandler.setScreenTitle("Home Screen");
 					homeHandler.setImage();
 					homeHandler.show();

@@ -2,7 +2,7 @@ package views.screen.popup;
 
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import views.screen.ViewsConfig;
+import views.screen.config.ViewPathsConfig;
 
 import java.io.IOException;
 
@@ -24,7 +24,7 @@ public class LoadingPopupScreen extends PopupScreen{
         LoadingPopupScreen popup = new LoadingPopupScreen(new Stage());
         popup.stage.initStyle(StageStyle.UNDECORATED);
         popup.message.setText(message);
-        popup.setImage(ViewsConfig.IMAGE_PATH + "/" + "loading.gif");
+        popup.setImage(ViewPathsConfig.IMAGE_PATH + "/" + "loading.gif");
         return popup;
     }
 

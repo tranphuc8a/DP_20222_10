@@ -12,8 +12,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Utils;
+import utils.currency.CurrencyFormatting;
 import views.screen.BaseScreenHandler;
-import views.screen.ViewsConfig;
+import views.screen.config.ViewPathsConfig;
 import views.screen.payment.CreditCardPaymentScreenHandler;
 import views.screen.popup.ErrorPopupScreen;
 
@@ -84,13 +85,13 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 		instructions.setText(deliveryInfo.getShippingInstructions());
 		address.setText(deliveryInfo.getAddress());
 
-		subtotal.setText(ViewsConfig.getCurrencyFormat(order.getSubtotal()));
-		shippingFees.setText(ViewsConfig.getCurrencyFormat(order.getShippingFees()));
-		total.setText(ViewsConfig.getCurrencyFormat(order.getTotal()));
+		subtotal.setText(CurrencyFormatting.getCurrencyFormat(order.getSubtotal()));
+		shippingFees.setText(CurrencyFormatting.getCurrencyFormat(order.getShippingFees()));
+		total.setText(CurrencyFormatting.getCurrencyFormat(order.getTotal()));
 
 		invoice.getOrder().getListOrderMedia().forEach(orderMedia -> {
 			try {
-				MediaInvoiceScreenHandler mis = new MediaInvoiceScreenHandler(ViewsConfig.INVOICE_MEDIA_SCREEN_PATH);
+				MediaInvoiceScreenHandler mis = new MediaInvoiceScreenHandler(ViewPathsConfig.INVOICE_MEDIA_SCREEN_PATH);
 				mis.setOrderItem((OrderItem) orderMedia);
 				vboxItems.getChildren().add(mis.getContent());
 			} catch (IOException | SQLException e) {
@@ -106,7 +107,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 
 	@FXML
 	void confirmInvoice(MouseEvent event) throws IOException { // biến event vi phạm stamp coupling vì không được sử dụng
-		BaseScreenHandler paymentScreen = new CreditCardPaymentScreenHandler(this.stage, ViewsConfig.PAYMENT_SCREEN_PATH, invoice);
+		BaseScreenHandler paymentScreen = new CreditCardPaymentScreenHandler(this.stage, ViewPathsConfig.PAYMENT_SCREEN_PATH, invoice);
 		paymentScreen.setBController(new PaymentController());
 		paymentScreen.setPreviousScreen(this);
 		paymentScreen.setHomeScreenHandler(homeScreenHandler);

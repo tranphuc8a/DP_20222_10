@@ -2,13 +2,10 @@ package views.screen.home;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import common.exception.MediaNotAvailableException;
@@ -20,7 +17,6 @@ import entity.cart.Cart;
 import entity.cart.CartItem;
 import entity.media.Media;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,10 +27,9 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
-import views.screen.ViewsConfig;
 import views.screen.cart.CartScreenHandler;
+import views.screen.config.ViewPathsConfig;
 import views.screen.popup.ErrorPopupScreen;
-import views.screen.popup.PopupScreen;
 import views.screen.popup.SuccessPopupScreen;
 
 
@@ -111,7 +106,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             this.homeItems = new ArrayList<>();
             for (Object object : medium) {
                 Media media = (Media)object;
-                MediaHandler m = new MediaHandler(ViewsConfig.HOME_MEDIA_PATH, media);
+                MediaHandler m = new MediaHandler(ViewPathsConfig.HOME_MEDIA_PATH, media);
                 m.attach(this);
                 this.homeItems.add(m);
             }
@@ -131,7 +126,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             CartScreenHandler cartScreen;
             try {
                 LOGGER.info("User clicked to view cart");
-                cartScreen = new CartScreenHandler(this.stage, ViewsConfig.CART_SCREEN_PATH);
+                cartScreen = new CartScreenHandler(this.stage, ViewPathsConfig.CART_SCREEN_PATH);
                 cartScreen.setHomeScreenHandler(this);
                 cartScreen.setBController(new ViewCartController());
                 cartScreen.requestToViewCart(this);
@@ -161,11 +156,11 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
     public void setImage() {
         // fix image path caused by fxml
-        File file1 = new File(ViewsConfig.IMAGE_PATH + "/" + "Logo.png");
+        File file1 = new File(ViewPathsConfig.IMAGE_PATH + "/" + "Logo.png");
         Image img1 = new Image(file1.toURI().toString());
         aimsImage.setImage(img1);
 
-        File file2 = new File(ViewsConfig.IMAGE_PATH + "/" + "cart.png");
+        File file2 = new File(ViewPathsConfig.IMAGE_PATH + "/" + "cart.png");
         Image img2 = new Image(file2.toURI().toString());
         cartImage.setImage(img2);
     }
@@ -265,7 +260,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     @FXML
     void redirectLoginScreen(MouseEvent event) { // biến event vi phạm stamp coupling vì không được sử dụng
         try {
-            BaseScreenHandler loginScreen = new LoginScreenHandler(this.stage, ViewsConfig.LOGIN_SCREEN_PATH);
+            BaseScreenHandler loginScreen = new LoginScreenHandler(this.stage, ViewPathsConfig.LOGIN_SCREEN_PATH);
             loginScreen.setHomeScreenHandler(this);
             loginScreen.setBController(this.authenticationController);
             loginScreen.show();

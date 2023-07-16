@@ -4,7 +4,7 @@ import controller.SessionInformation;
 import entity.cart.Cart;
 import entity.cart.CartItem;
 import entity.shipping.DeliveryInfo;
-import views.screen.ViewsConfig;
+import views.screen.config.ViewVatsConfig;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,7 +35,7 @@ public class Order {
         }
         this.orderMediaList = Collections.unmodifiableList(orderItems);
         this.subtotal = cart.calSubtotal();
-        this.tax = (int) (ViewsConfig.PERCENT_VAT/100) * subtotal;
+        this.tax = (int) (ViewVatsConfig.PERCENT_VAT/100) * subtotal;
     }
 
     public List getListOrderMedia() {

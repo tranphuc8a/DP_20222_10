@@ -5,10 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import views.screen.BaseScreenHandler;
-import views.screen.ViewsConfig;
+import views.screen.config.ViewPathsConfig;
 
 import java.io.IOException;
 
@@ -40,7 +39,7 @@ abstract public class PopupScreen extends BaseScreenHandler {
     Label message;
 
     public PopupScreen(Stage stage) throws IOException{
-        super(stage, ViewsConfig.POPUP_PATH);
+        super(stage, ViewPathsConfig.POPUP_PATH);
     }
 
     abstract protected PopupScreen createPopup(String message) throws IOException;

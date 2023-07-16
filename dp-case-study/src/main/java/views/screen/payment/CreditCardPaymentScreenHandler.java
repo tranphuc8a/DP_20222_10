@@ -10,12 +10,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import utils.Utils;
-import views.screen.BaseScreenHandler;
-import views.screen.ViewsConfig;
 import views.screen.popup.ErrorPopupScreen;
 
 import java.io.IOException;
-import java.util.Map;
 import java.util.logging.Logger;
 
 //temporal cohesion: ở các hàm setupData() và setupFunctionality()

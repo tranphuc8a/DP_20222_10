@@ -1,7 +1,7 @@
 package views.screen.popup;
 
 import javafx.stage.Stage;
-import views.screen.ViewsConfig;
+import views.screen.config.ViewPathsConfig;
 
 import java.io.IOException;
 
@@ -24,7 +24,7 @@ public class ErrorPopupScreen extends PopupScreen{
         ErrorPopupScreen popup = new ErrorPopupScreen(new Stage());
 //        if (undecorated) popup.stage.initStyle(StageStyle.UNDECORATED);
         popup.message.setText(message);
-        popup.setImage(ViewsConfig.IMAGE_PATH + "/" + "tickerror.png");
+        popup.setImage(ViewPathsConfig.IMAGE_PATH + "/" + "tickerror.png");
         return popup;
     }
 

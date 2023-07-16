@@ -1,16 +1,9 @@
-package views.screen;
-
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-
-import java.text.NumberFormat;
-import java.util.Locale;
+package views.screen.config;
 
 /**
  * @author
  */
-public class ViewsConfig {
+public class ViewPathsConfig {
 
     // SRP: các nhóm trách nhiệm khác nhau cùng chung 1 lớp: path, VAT, font, currency
     // Solution: Tách thành 4 lớp như solution của coincidental cohesion
@@ -31,20 +24,4 @@ public class ViewsConfig {
     public static final String HOME_PATH  = "/views/fxml/home.fxml";
     public static final String HOME_MEDIA_PATH = "/views/fxml/media_home.fxml";
     public static final String POPUP_PATH = "/views/fxml/popup.fxml";
-
-    //coincidental cohesion: PERCENT_VAT
-    //solution: có thể tách vào 1 class TaxConfig
-    public static float PERCENT_VAT = 10;
-
-    //coincidental cohesion: REGULAR_FONT
-    //solution: có thể tách vào 1 class FontConfig
-    public static Font REGULAR_FONT = Font.font("Segoe UI", FontWeight.NORMAL, FontPosture.REGULAR, 24);
-
-    //coincidental cohesion: getCurrencyFormat()
-    //solution: có thể tách vào 1 class CurrencyFormatUtil
-    public static String getCurrencyFormat(int num) {
-        Locale vietnam = new Locale("vi", "VN");
-        NumberFormat defaultFormat = NumberFormat.getCurrencyInstance(vietnam);
-        return defaultFormat.format(num);
-    }
 }

@@ -21,10 +21,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Utils;
+import utils.currency.CurrencyFormatting;
 import views.screen.BaseScreenHandler;
-import views.screen.ViewsConfig;
+import views.screen.config.ViewPathsConfig;
+import views.screen.config.ViewVatsConfig;
 import views.screen.popup.ErrorPopupScreen;
-import views.screen.popup.PopupScreen;
 import views.screen.shipping.ShippingScreenHandler;
 
 public class CartScreenHandler extends BaseScreenHandler {
@@ -71,7 +72,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 
 	protected void setupFunctionality() throws Exception {
 		// fix relative image path caused by fxml
-		File file = new File(ViewsConfig.IMAGE_PATH + "/Logo.png");
+		File file = new File(ViewPathsConfig.IMAGE_PATH + "/Logo.png");
 		Image im = new Image(file.toURI().toString());
 		aimsImage.setImage(im);
 
@@ -126,7 +127,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 
 			// display shipping form
 			ShippingScreenHandler shippingScreenHandler = new ShippingScreenHandler(
-					this.stage, ViewsConfig.SHIPPING_SCREEN_PATH, order);
+					this.stage, ViewPathsConfig.SHIPPING_SCREEN_PATH, order);
 			shippingScreenHandler.setPreviousScreen(this);
 			shippingScreenHandler.setHomeScreenHandler(homeScreenHandler);
 			shippingScreenHandler.setScreenTitle("Shipping Screen");
@@ -147,14 +148,14 @@ public class CartScreenHandler extends BaseScreenHandler {
 	void updateCartAmount(){
 		// calculate subtotal and amount
 		int subtotal = getBController().getCartSubtotal();
-		int vat = (int)((ViewsConfig.PERCENT_VAT/100)*subtotal);
+		int vat = (int)((ViewVatsConfig.PERCENT_VAT/100)*subtotal);
 		int amount = subtotal + vat;
 		LOGGER.info("amount" + amount);
 
 		// update subtotal and amount of Cart
-		labelSubtotal.setText(ViewsConfig.getCurrencyFormat(subtotal));
-		labelVAT.setText(ViewsConfig.getCurrencyFormat(vat));
-		labelAmount.setText(ViewsConfig.getCurrencyFormat(amount));
+		labelSubtotal.setText(CurrencyFormatting.getCurrencyFormat(subtotal));
+		labelVAT.setText(CurrencyFormatting.getCurrencyFormat(vat));
+		labelAmount.setText(CurrencyFormatting.getCurrencyFormat(amount));
 	}
 	
 	private void displayCartWithMediaAvailability(){
@@ -169,7 +170,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 
 				// display the attribute of vboxCart media
 				CartItem cartItem = (CartItem) cm;
-				MediaHandler mediaCartScreen = new MediaHandler(ViewsConfig.CART_MEDIA_PATH, this);
+				MediaHandler mediaCartScreen = new MediaHandler(ViewPathsConfig.CART_MEDIA_PATH, this);
 				mediaCartScreen.setCartItem(cartItem);
 
 				// add spinner

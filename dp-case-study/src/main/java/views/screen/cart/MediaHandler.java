@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import common.exception.MediaUpdateException;
 import common.exception.ViewCartException;
 import controller.SessionInformation;
-import entity.cart.Cart;
 import entity.cart.CartItem;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -22,8 +21,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import utils.Utils;
+import utils.currency.CurrencyFormatting;
 import views.screen.FXMLScreenHandler;
-import views.screen.ViewsConfig;
+import views.screen.config.ViewFontsConfig;
 
 public class MediaHandler extends FXMLScreenHandler {
 	private static Logger LOGGER = Utils.getLogger(MediaHandler.class.getName());
@@ -72,7 +72,7 @@ public class MediaHandler extends FXMLScreenHandler {
 
 	private void setMediaInfo() {
 		title.setText(cartItem.getMedia().getTitle());
-		price.setText(ViewsConfig.getCurrencyFormat(cartItem.getPrice()));
+		price.setText(CurrencyFormatting.getCurrencyFormat(cartItem.getPrice()));
 		File file = new File(cartItem.getMedia().getImageURL());
 		Image im = new Image(file.toURI().toString());
 		image.setImage(im);
@@ -81,7 +81,7 @@ public class MediaHandler extends FXMLScreenHandler {
 		image.setFitWidth(92);
 
 		// add delete button
-		btnDelete.setFont(ViewsConfig.REGULAR_FONT);
+		btnDelete.setFont(ViewFontsConfig.REGULAR_FONT);
 		btnDelete.setOnMouseClicked(e -> {
 			try {
 				//biến cartInstance vi phạm common coupling
@@ -116,7 +116,7 @@ public class MediaHandler extends FXMLScreenHandler {
 				cartItem.setQuantity(numOfProd);
 
 				// update the total of mediaCart
-				price.setText(ViewsConfig.getCurrencyFormat(numOfProd* cartItem.getPrice()));
+				price.setText(CurrencyFormatting.getCurrencyFormat(numOfProd* cartItem.getPrice()));
 
 				// update subtotal and amount of Cart
 				cartScreen.updateCartAmount();

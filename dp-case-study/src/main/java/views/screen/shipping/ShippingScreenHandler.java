@@ -9,7 +9,6 @@ import entity.shipping.ShippingConfigs;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,16 +16,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
-import views.screen.ViewsConfig;
+import views.screen.config.ViewPathsConfig;
 import views.screen.invoice.InvoiceScreenHandler;
 import views.screen.popup.ErrorPopupScreen;
-import views.screen.popup.PopupScreen;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 //temporal cohesion: ở các hàm setupData() và setupFunctionality()
@@ -94,7 +90,7 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		
 		// create invoice screen
 		Invoice invoice = getBController().createInvoice(order);
-		BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, ViewsConfig.INVOICE_SCREEN_PATH, invoice);
+		BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, ViewPathsConfig.INVOICE_SCREEN_PATH, invoice);
 		InvoiceScreenHandler.setPreviousScreen(this);
 		InvoiceScreenHandler.setHomeScreenHandler(homeScreenHandler);
 		InvoiceScreenHandler.setScreenTitle("Invoice Screen");

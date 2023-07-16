@@ -7,11 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import common.exception.MediaNotAvailableException;
 import common.interfaces.Observable;
 import common.interfaces.Observer;
-import entity.cart.Cart;
-import entity.cart.CartItem;
 import entity.media.Media;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,9 +18,8 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import utils.Utils;
+import utils.currency.CurrencyFormatting;
 import views.screen.FXMLScreenHandler;
-import views.screen.ViewsConfig;
-import views.screen.popup.PopupScreen;
 
 public class MediaHandler extends FXMLScreenHandler implements Observable {
     @FXML
@@ -74,7 +70,7 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
         mediaImage.setImage(image);
 
         mediaTitle.setText(media.getTitle());
-        mediaPrice.setText(ViewsConfig.getCurrencyFormat(media.getPrice()));
+        mediaPrice.setText(CurrencyFormatting.getCurrencyFormat(media.getPrice()));
         mediaAvail.setText(Integer.toString(media.getQuantity()));
         spinnerChangeNumber.setValueFactory(
             new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1)

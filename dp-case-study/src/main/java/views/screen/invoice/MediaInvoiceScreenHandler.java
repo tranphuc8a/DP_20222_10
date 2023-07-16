@@ -9,8 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import utils.currency.CurrencyFormatting;
 import views.screen.FXMLScreenHandler;
-import views.screen.ViewsConfig;
 
 public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
     @FXML
@@ -50,7 +50,7 @@ public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
 
     public void setMediaInfo() throws SQLException{
         title.setText(orderItem.getMedia().getTitle());
-        price.setText(ViewsConfig.getCurrencyFormat(orderItem.getPrice()));
+        price.setText(CurrencyFormatting.getCurrencyFormat(orderItem.getPrice()));
         numOfProd.setText(String.valueOf(orderItem.getQuantity()));
         setImage(image, orderItem.getMedia().getImageURL());
 		image.setPreserveRatio(false);

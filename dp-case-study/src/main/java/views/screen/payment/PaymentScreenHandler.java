@@ -6,7 +6,7 @@ import entity.payment.PaymentMethod;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
-import views.screen.ViewsConfig;
+import views.screen.config.ViewPathsConfig;
 import views.screen.popup.ErrorPopupScreen;
 
 import java.io.IOException;
@@ -41,7 +41,7 @@ abstract public class PaymentScreenHandler extends BaseScreenHandler {
 //                expirationDate.getText(), securityCode.getText());
         Map<String, String> response = ctrl.payOrder(invoice.getAmount(), contents, getPaymentMethod());
 
-        BaseScreenHandler resultScreen = new ResultScreenHandler(this.stage, ViewsConfig.RESULT_SCREEN_PATH, response);
+        BaseScreenHandler resultScreen = new ResultScreenHandler(this.stage, ViewPathsConfig.RESULT_SCREEN_PATH, response);
         resultScreen.setPreviousScreen(this);
         resultScreen.setHomeScreenHandler(homeScreenHandler);
         resultScreen.setScreenTitle("Result Screen");
